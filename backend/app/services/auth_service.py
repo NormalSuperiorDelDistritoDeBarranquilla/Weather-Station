@@ -29,8 +29,8 @@ def set_session_cookie(response: Response, token: str) -> None:
         key=settings.session_cookie_name,
         value=token,
         httponly=True,
-        samesite="lax",
-        secure=False,
+        samesite="none",
+        secure=True,
         max_age=settings.jwt_expire_minutes * 60,
         path="/",
     )
@@ -40,7 +40,7 @@ def clear_session_cookie(response: Response) -> None:
     response.delete_cookie(
         key=settings.session_cookie_name,
         path="/",
-        samesite="lax",
+        samesite="none",
     )
 
 
