@@ -36,7 +36,7 @@ namespace Config
   const char *WIFI_SSID = "WIFI";
   const char *WIFI_PASSWORD = "CLAVE_WIFI";
 
-  const char *API_URL = "http://192.168.1.50:8000/api/sensor-data";
+  const char *API_URL = "https://weather-station-fjjr.onrender.com/api";
   const char *API_KEY = "m1k1u-sensor-key";
   const char *STATION_ID = "M1K1U-001";
 
