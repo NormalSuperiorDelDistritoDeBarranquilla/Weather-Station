@@ -22,10 +22,10 @@ export function FloatingAlerts() {
   const importantAlerts = useMemo<ToastAlert[]>(
     () =>
       (data?.alerts ?? [])
-        .filter((alert) => alert.severity === 'warning' || alert.severity === 'critical')
+        .filter((alert) => alert.severity === 'critical')
         .map((alert) => ({
           ...alert,
-          toastKey: `${alert.code}-${alert.triggered_at}`,
+          toastKey: alert.code,
         })),
     [data?.alerts],
   )
