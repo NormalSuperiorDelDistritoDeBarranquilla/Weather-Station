@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import date, datetime
-from typing import Literal
+from typing import Annotated, Literal
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -14,53 +14,77 @@ HistoryRange = Literal["24h", "7d", "30d", "all"]
 class SensorDataBase(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
-    station_id: str = Field(
-        default="M1K1U-001",
-        min_length=3,
-        max_length=50,
-        validation_alias=AliasChoices("station_id", "stationId"),
-    )
-    temperature: float | None = Field(
-        default=None,
-        ge=-80,
-        le=100,
-        validation_alias=AliasChoices("temperature", "temperatura_C"),
-    )
-    pressure: float | None = Field(
-        default=None,
-        ge=800,
-        le=1200,
-        validation_alias=AliasChoices("pressure", "presion_hPa"),
-    )
-    altitude: float | None = Field(
-        default=None,
-        ge=-500,
-        le=9000,
-        validation_alias=AliasChoices("altitude", "altitud_m"),
-    )
-    luminosity: float | None = Field(
-        default=None,
-        ge=0,
-        le=200000,
-        validation_alias=AliasChoices("luminosity", "luminosidad_lux"),
-    )
-    rain_analog: float | None = Field(
-        default=None,
-        ge=0,
-        le=4095,
-        validation_alias=AliasChoices("rain_analog", "lluvia_analog"),
-    )
-    rain_digital: str | None = Field(
-        default=None,
-        max_length=20,
-        validation_alias=AliasChoices("rain_digital", "lluvia_digital"),
-    )
-    wind_speed: float | None = Field(
-        default=None,
-        ge=0,
-        le=250,
-        validation_alias=AliasChoices("wind_speed", "velViento_kmh"),
-    )
+    station_id: Annotated[
+        str,
+        Field(
+            default="M1K1U-001",
+            min_length=3,
+            max_length=50,
+            validation_alias=AliasChoices("station_id", "stationId"),
+        ),
+    ]
+    temperature: Annotated[
+        float | None,
+        Field(
+            default=None,
+            ge=-80,
+            le=100,
+            validation_alias=AliasChoices("temperature", "temperatura_C"),
+        ),
+    ]
+    pressure: Annotated[
+        float | None,
+        Field(
+            default=None,
+            ge=800,
+            le=1200,
+            validation_alias=AliasChoices("pressure", "presion_hPa"),
+        ),
+    ]
+    altitude: Annotated[
+        float | None,
+        Field(
+            default=None,
+            ge=-500,
+            le=9000,
+            validation_alias=AliasChoices("altitude", "altitud_m"),
+        ),
+    ]
+    luminosity: Annotated[
+        float | None,
+        Field(
+            default=None,
+            ge=0,
+            le=200000,
+            validation_alias=AliasChoices("luminosity", "luminosidad_lux"),
+        ),
+    ]
+    rain_analog: Annotated[
+        float | None,
+        Field(
+            default=None,
+            ge=0,
+            le=4095,
+            validation_alias=AliasChoices("rain_analog", "lluvia_analog"),
+        ),
+    ]
+    rain_digital: Annotated[
+        str | None,
+        Field(
+            default=None,
+            max_length=20,
+            validation_alias=AliasChoices("rain_digital", "lluvia_digital"),
+        ),
+    ]
+    wind_speed: Annotated[
+        float | None,
+        Field(
+            default=None,
+            ge=0,
+            le=250,
+            validation_alias=AliasChoices("wind_speed", "velViento_kmh"),
+        ),
+    ]
 
     @field_validator("station_id")
     @classmethod

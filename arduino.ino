@@ -36,7 +36,11 @@ namespace Config
   const char *WIFI_SSID = "WIFI";
   const char *WIFI_PASSWORD = "CLAVE_WIFI";
 
-  const char *API_URL = "https://weather-station-fjjr.onrender.com/api";
+  // Cambia esta URL por la IP o el host del backend que sirve la API.
+  // El ESP32 no se conecta directamente a la base de datos, solo al backend.
+  // Ejemplo local: "http://192.168.0.50/api/sensor-data"
+  // Ejemplo remoto: "https://weather-station-fjjr.onrender.com/api/sensor-data"
+  const char *API_URL = "http://192.168.0.50/api/sensor-data";
   const char *API_KEY = "m1k1u-sensor-key";
   const char *STATION_ID = "M1K1U-001";
 
@@ -353,6 +357,9 @@ bool sendTelemetry(const TelemetryPacket &packet)
 
   HTTPClient http;
   http.setTimeout(Config::HTTP_TIMEOUT_MS);
+  Serial.print(F("[HTTP] Backend URL: "));
+  Serial.println(Config::API_URL);
+
   http.begin(Config::API_URL);
   http.addHeader(F("Content-Type"), F("application/json"));
   http.addHeader(F("X-API-Key"), Config::API_KEY);
@@ -372,6 +379,14 @@ bool sendTelemetry(const TelemetryPacket &packet)
     Serial.println(F("[HTTP] Respuesta del backend:"));
     Serial.println(responseBody);
   }
+
+  if (statusCode >= 200 && statusCode < 300)
+  {
+    Serial.println(F("[HTTP] Conectado al backend. El backend debe haber guardado los datos en la BD."));
+    return true;
+  }
+
+  Serial.println(F("[HTTP] No se pudo conectar correctamente al backend/BD."));
 
   return statusCode >= 200 && statusCode < 300;
 }
