@@ -1,4 +1,4 @@
-import { Activity, ArrowRight, Clock3, Database, RadioTower, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Clock3 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { Footer } from '../components/Footer'
@@ -7,7 +7,7 @@ import { StatusBadge } from '../components/StatusBadge'
 import { publicLocation } from '../data/publicSite'
 import { usePublicLanding } from '../hooks/usePublicLanding'
 import type { MetricKey } from '../types/api'
-import { formatDateTime, formatMetricValue, formatNumber } from '../utils/format'
+import { formatDateTime, formatMetricValue } from '../utils/format'
 import { metricUI } from '../utils/metricConfig'
 
 const metricKeys = Object.keys(metricUI) as MetricKey[]
@@ -19,7 +19,6 @@ export function LiveStatusPage() {
   const stats = publicLanding?.stats_24h
   const location = publicLanding?.location ?? publicLocation
   const isStationOnline = latest?.active ?? false
-  const rainDigitalStatus = latest?.latest?.rain_digital ?? 'Sin dato'
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -47,41 +46,14 @@ export function LiveStatusPage() {
               sensor y actividad operativa general sin necesidad de iniciar sesion.
             </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              <div className="apple-float-card rounded-[1.8rem] p-5">
-                <div className="flex items-center gap-3 text-cyan-200">
-                  <Activity className="h-4 w-4" />
-                  <span className="text-xs uppercase tracking-[0.24em]">Estado</span>
-                </div>
-                <p className="mt-4 font-display text-3xl text-white">{latest?.active_label ?? 'Sin conexion'}</p>
-                <p className="mt-3 text-sm text-slate-300">La capa publica refleja si la estacion sigue reportando.</p>
-              </div>
-
-              <div className="apple-float-card rounded-[1.8rem] p-5">
+            <div className="mt-8">
+              <div className="apple-float-card rounded-[1.8rem] p-5 max-w-xs">
                 <div className="flex items-center gap-3 text-emerald-200">
                   <Clock3 className="h-4 w-4" />
                   <span className="text-xs uppercase tracking-[0.24em]">Ultimo paquete</span>
                 </div>
                 <p className="mt-4 font-display text-3xl text-white">{formatDateTime(latest?.last_seen)}</p>
                 <p className="mt-3 text-sm text-slate-300">Fecha y hora real de la ultima transmision procesada.</p>
-              </div>
-
-              <div className="apple-float-card rounded-[1.8rem] p-5">
-                <div className="flex items-center gap-3 text-violet-200">
-                  <Database className="h-4 w-4" />
-                  <span className="text-xs uppercase tracking-[0.24em]">Registros 24h</span>
-                </div>
-                <p className="mt-4 font-display text-3xl text-white">{formatNumber(stats?.total_records, 0)}</p>
-                <p className="mt-3 text-sm text-slate-300">Persistencia real en SQLite durante la ventana reciente.</p>
-              </div>
-
-              <div className="apple-float-card rounded-[1.8rem] p-5">
-                <div className="flex items-center gap-3 text-sky-200">
-                  <RadioTower className="h-4 w-4" />
-                  <span className="text-xs uppercase tracking-[0.24em]">Lluvia digital</span>
-                </div>
-                <p className="mt-4 font-display text-3xl text-white">{rainDigitalStatus}</p>
-                <p className="mt-3 text-sm text-slate-300">Estado discreto reportado por el pin digital del sensor de lluvia.</p>
               </div>
             </div>
           </article>
