@@ -1,4 +1,4 @@
-import { ArrowRight, Clock3 } from 'lucide-react'
+import { ArrowRight, Clock3, RadioTower, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { Footer } from '../components/Footer'
@@ -19,6 +19,7 @@ export function LiveStatusPage() {
   const stats = publicLanding?.stats_24h
   const location = publicLanding?.location ?? publicLocation
   const isStationOnline = latest?.active ?? false
+  const rainDigitalStatus = latest?.latest?.rain_digital ?? 'Sin dato'
 
   return (
     <div className="relative min-h-screen overflow-hidden">
