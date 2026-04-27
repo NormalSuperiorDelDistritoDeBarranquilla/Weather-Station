@@ -163,12 +163,12 @@ export function DashboardPage() {
               Inicio analitico para lecturas, patrones y comparativas.
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
-              Esta pantalla es el corazon de datos del sistema: combina estado operativo, metricas recientes y varios
+              Esta pantalla es el corazón de datos del sistema: combina estado operativo, métricas recientes y varios
               tipos de graficas para interpretar la actividad de la estacion sin salir del panel principal.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <StatusBadge
-                label={latest?.active_label ?? 'Sin conexion'}
+                label={latest?.active_label ?? 'Sin conexión'}
                 tone={latest?.active ? 'success' : 'danger'}
               />
               <StatusBadge label={`Estacion ${latest?.station_id ?? '--'}`} tone="info" />
@@ -319,7 +319,7 @@ export function DashboardPage() {
                     <StatusBadge
                       label={
                         !(latest?.active ?? false)
-                          ? 'Sin conexion'
+                          ? 'Sin conexión'
                           : latest?.metric_states[metricKey]?.value == null
                             ? 'Sin dato'
                             : latest?.metric_states[metricKey]?.status_label ?? 'Sin datos'

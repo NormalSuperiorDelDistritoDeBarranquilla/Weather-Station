@@ -145,9 +145,9 @@ def resolve_connection_state(
     latest_value: float | None,
 ) -> tuple[SensorConnectionState, str]:
     if latest_station_record is None:
-        return "awaiting_data", "No hay conexion"
+        return "awaiting_data", "No hay conexión"
     if not station_active:
-        return "offline", "Sin conexion"
+        return "offline", "Sin conexión"
     if latest_value is None:
         return "online", "Reporte incompleto"
     return "online", "En linea"
@@ -202,7 +202,7 @@ def build_sensor_issues(
                 code="awaiting-first-packet",
                 severity="critical",
                 title="Sin telemetria inicial",
-                message=f"Aun no ha llegado ningun paquete para {label.lower()}. La plataforma esta esperando el primer envio desde Arduino o ESP32.",
+                message=f"Aún no ha llegado ningún paquete para {label.lower()}. La plataforma está esperando el primer envío desde Arduino o ESP32.",
                 detected_at=None,
             ),
         )
@@ -213,8 +213,8 @@ def build_sensor_issues(
             SensorIssue(
                 code="station-offline",
                 severity="critical",
-                title="Estacion sin conexion",
-                message="La estacion quedo fuera de la ventana operativa y este sensor ya no recibe paquetes recientes.",
+                title="Estación sin conexión",
+                message="La estación quedó fuera de la ventana operativa y este sensor ya no recibe paquetes recientes.",
                 detected_at=snapshot.last_packet_at,
             ),
         )
@@ -224,8 +224,8 @@ def build_sensor_issues(
             SensorIssue(
                 code="missing-latest-value",
                 severity="warning",
-                title="Dato faltante en el ultimo paquete",
-                message=f"El ultimo paquete llego, pero {label.lower()} no traia valor. Esto apunta a una lectura parcial o a una falla puntual del sensor.",
+                title="Dato faltante en el último paquete",
+                message=f"El último paquete llegó, pero {label.lower()} no traía valor. Esto apunta a una lectura parcial o a una falla puntual del sensor.",
                 detected_at=snapshot.last_packet_at,
             ),
         )
@@ -248,7 +248,7 @@ def build_sensor_issues(
                     code="stale-valid-reading",
                     severity="warning",
                     title="Lectura valida desactualizada",
-                    message=f"La estacion sigue reportando, pero {label.lower()} no entrega un valor valido desde hace {round(minutes_since_valid, 1)} minutos.",
+                    message=f"La estación sigue reportando, pero {label.lower()} no entrega un valor válido desde hace {round(minutes_since_valid, 1)} minutos.",
                     detected_at=snapshot.last_valid_at,
                 ),
             )
@@ -283,7 +283,7 @@ def build_sensor_issues(
                 code="flatline-detected",
                 severity=severity,
                 title="Lectura plana sospechosa",
-                message=f"El sensor repitio el mismo valor durante {snapshot.flatline_length} paquetes consecutivos. Conviene revisar si el canal esta congelado.",
+                message=f"El sensor repitió el mismo valor durante {snapshot.flatline_length} paquetes consecutivos. Conviene revisar si el canal está congelado.",
                 detected_at=snapshot.last_valid_at,
             ),
         )
@@ -298,21 +298,21 @@ def build_narrative(
     snapshot: MetricHealthSnapshot,
 ) -> str:
     if latest_station_record is None:
-        return f"Sin conexion aun para {label.lower()}. La plataforma permanece en espera del primer paquete del microcontrolador."
+        return f"Sin conexión aún para {label.lower()}. La plataforma permanece en espera del primer paquete del microcontrolador."
 
     if not snapshot.station_active:
-        return f"La estacion dejo de reportar y {label.lower()} quedo sin conexion operativa. El ultimo paquete fue recibido el {snapshot.last_packet_at}."
+        return f"La estación dejó de reportar y {label.lower()} quedó sin conexión operativa. El último paquete fue recibido el {snapshot.last_packet_at}."
 
     if snapshot.latest_value is None:
-        return f"La estacion sigue en linea, pero {label.lower()} no llego en el ultimo paquete. Hay conectividad, aunque el canal del sensor esta incompleto."
+        return f"La estación sigue en línea, pero {label.lower()} no llegó en el último paquete. Hay conectividad, aunque el canal del sensor está incompleto."
 
     if snapshot.flatline_detected:
-        return f"{label} sigue llegando, pero la lectura luce anormalmente estable. Conviene revisar si el sensor quedo fijo en el ultimo valor."
+        return f"{label} sigue llegando, pero la lectura luce anormalmente estable. Conviene revisar si el sensor quedó fijo en el último valor."
 
     if snapshot.completeness_ratio < 0.85:
-        return f"{label} esta reportando, pero con integridad irregular dentro del rango. Hay que vigilar la perdida parcial de paquetes."
+        return f"{label} está reportando, pero con integridad irregular dentro del rango. Hay que vigilar la pérdida parcial de paquetes."
 
-    return f"{label} se esta recibiendo con buena continuidad y la serie queda lista para analisis detallado."
+    return f"{label} se está recibiendo con buena continuidad y la serie queda lista para análisis detallado."
 
 
 def build_metric_health_snapshot(

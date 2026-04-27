@@ -14,7 +14,7 @@ const placeholders = [
   {
     icon: FolderKanban,
     title: 'Estado actual y roadmap',
-    body: 'Usa esta seccion para documentar fases, modulos pendientes, mejoras futuras y nuevas variables de sensores.',
+    body: 'Usa esta sección para documentar fases, módulos pendientes, mejoras futuras y nuevas variables de sensores.',
   },
   {
     icon: FileText,

@@ -108,7 +108,7 @@ def get_latest_record(db: Session, station_id: str | None = None) -> SensorData 
 
 def get_station_activity(record: SensorData | None) -> tuple[bool, str, datetime | None]:
     if record is None:
-        return False, "Sin conexion", None
+        return False, "Sin conexión", None
 
     active_window = timedelta(minutes=settings.station_active_minutes)
     active = utc_now() - record.timestamp <= active_window

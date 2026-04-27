@@ -33,7 +33,7 @@ export function LiveStatusPage() {
           <article className="panel hero-sheen relative overflow-hidden p-8 sm:p-10">
             <span className="pill">Estado de la estacion</span>
             <div className="mt-6 flex flex-wrap gap-3">
-              <StatusBadge label={isStationOnline ? 'Transmision activa' : 'Sin conexion'} tone={isStationOnline ? 'success' : 'danger'} />
+              <StatusBadge label={isStationOnline ? 'Transmisión activa' : 'Sin conexión'} tone={isStationOnline ? 'success' : 'danger'} />
               <StatusBadge label={latest?.station_id ?? 'Sin estacion'} tone="neutral" />
               <StatusBadge label="Actualizacion cada 15 segundos" tone="info" />
             </div>
@@ -71,7 +71,7 @@ export function LiveStatusPage() {
                 <span className="pill border-white/15 bg-slate-950/35 text-cyan-100">Lectura abierta</span>
                 <h2 className="mt-6 max-w-lg font-display text-4xl text-white">Panel pensado para revisar la estacion incluso antes del login.</h2>
                 <p className="mt-4 max-w-lg text-sm leading-7 text-slate-200/90">
-                  Si la estacion aun no transmite, el visor lo muestra tal cual. Si llega telemetria parcial, cada
+                  Si la estación aún no transmite, el visor lo muestra tal cual. Si llega telemetría parcial, cada
                   variable queda marcada como disponible o sin dato.
                 </p>
               </div>
@@ -123,7 +123,7 @@ export function LiveStatusPage() {
 
                 <div className="mt-4 flex flex-wrap items-center gap-3">
                   <StatusBadge
-                    label={!isStationOnline ? 'Sin conexion' : hasValue ? state?.status_label ?? 'Disponible' : 'Sin dato'}
+                    label={!isStationOnline ? 'Sin conexión' : hasValue ? state?.status_label ?? 'Disponible' : 'Sin dato'}
                     tone={statusTone}
                   />
                   <span className="text-sm text-slate-300">
@@ -168,7 +168,7 @@ export function LiveStatusPage() {
                     <p className="mt-3 text-sm leading-6 text-slate-300">
                       {hasValue
                         ? 'La variable llego en el ultimo paquete procesado por el backend.'
-                        : 'El ultimo paquete no trajo este campo o aun no existe una lectura valida.'}
+                        : 'El último paquete no trajo este campo o aún no existe una lectura válida.'}
                     </p>
                   </div>
                 )
@@ -192,7 +192,7 @@ export function LiveStatusPage() {
             </div>
             <h3 className="mt-6 font-display text-3xl text-white">El visor publico deja entrar a cualquiera, pero el control fino sigue protegido.</h3>
             <p className="mt-4 text-sm leading-7 text-slate-300">
-              Esta pagina muestra estado real, ultima transmision y disponibilidad por variable. El dashboard interno
+              Esta página muestra estado real, última transmisión y disponibilidad por variable. El dashboard interno
               conserva el analisis historico detallado, alertas y diagnostico individual de sensores.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">

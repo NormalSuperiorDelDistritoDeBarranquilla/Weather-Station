@@ -607,7 +607,7 @@ Necesita login.
 
 La plataforma maneja estos escenarios:
 
-- `Sin conexion`: no llegan paquetes recientes
+- `Sin conexión`: no llegan paquetes recientes
 - `Sin dato`: llego un paquete, pero ese sensor no vino en el payload
 - `Activa`: la estacion envio datos dentro de la ventana operativa
 
@@ -776,7 +776,7 @@ Revisa:
 - firewall del equipo
 - que la `X-API-Key` coincida
 
-### Problema: la pagina muestra "Sin conexion"
+### Problema: la página muestra "Sin conexión"
 
 Eso significa:
 

@@ -257,7 +257,7 @@ El sistema deriva alertas activas desde la ultima lectura y el historial recient
 - viento fuerte o extremo
 - lluvia detectada por el canal digital del MH-RD
 - saturacion del canal analogico de lluvia
-- perdida de datos, campo ausente en el ultimo paquete o flatline por sensor
+- pérdida de datos, campo ausente en el último paquete o flatline por sensor
 
 Notas:
 

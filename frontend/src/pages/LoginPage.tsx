@@ -84,7 +84,7 @@ export function LoginPage() {
                 </span>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <StatusBadge label={latest?.active ? 'Transmision activa' : 'Sin conexion'} tone={latest?.active ? 'success' : 'danger'} />
+                  <StatusBadge label={latest?.active ? 'Transmisión activa' : 'Sin conexión'} tone={latest?.active ? 'success' : 'danger'} />
                   <StatusBadge label={publicLocationData.neighborhood} tone="neutral" />
                   <StatusBadge label="Panel administrativo" tone="info" />
                 </div>

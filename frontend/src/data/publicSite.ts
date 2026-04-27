@@ -166,7 +166,7 @@ export const telemetryFlow: PublicTelemetryStep[] = [
   {
     step: '01',
     title: 'Captura en sitio',
-    description: 'ESP32 lee BMP280, BH1750, MH-RD y anemometro, luego arma un paquete JSON con esos sensores maestros.',
+    description: 'ESP32 lee BMP280, BH1750, MH-RD y anemómetro, luego arma un paquete JSON con esos sensores maestros.',
   },
   {
     step: '02',

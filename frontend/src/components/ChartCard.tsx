@@ -65,7 +65,7 @@ export function ChartCard({ title, description, unit, stroke, dataKey, data }: C
           </ResponsiveContainer>
         ) : (
           <div className="flex h-full items-center justify-center rounded-[1.75rem] border border-dashed border-white/10 bg-slate-950/20 px-6 text-center text-sm leading-6 text-slate-400">
-            Sin lecturas reales todavia para esta variable. La grafica aparecera cuando Arduino o ESP32 envie datos al backend.
+            Sin lecturas reales todavía para esta variable. La gráfica aparecerá cuando Arduino o ESP32 envíe datos al backend.
           </div>
         )}
       </div>

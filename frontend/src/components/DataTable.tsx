@@ -61,7 +61,7 @@ export function DataTable({ data, page, totalPages, total, onPageChange }: DataT
             ) : (
               <tr className="border-t border-white/5 text-slate-300">
                 <td colSpan={9} className="px-6 py-10 text-center">
-                  No hay registros reales todavia. El historial se llenara cuando la estacion envie telemetria valida.
+                  No hay registros reales todavía. El historial se llenará cuando la estación envíe telemetría válida.
                 </td>
               </tr>
             )}

@@ -43,7 +43,7 @@ export function ConsoleHomePage() {
               lleva rapido al dashboard analitico, graficas, registros historicos y diagnosticos por sensor.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <StatusBadge label={latest?.active_label ?? 'Sin conexion'} tone={latest?.active ? 'success' : 'danger'} />
+              <StatusBadge label={latest?.active_label ?? 'Sin conexión'} tone={latest?.active ? 'success' : 'danger'} />
               <StatusBadge label={`Estacion ${latest?.station_id ?? '--'}`} tone="info" />
             </div>
 
@@ -53,7 +53,7 @@ export function ConsoleHomePage() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
               <Link to="/charts" className="button-secondary">
-                Ver graficas historicas
+                Ver gráficas históricas
               </Link>
             </div>
           </div>
@@ -89,7 +89,7 @@ export function ConsoleHomePage() {
           const metric = metricUI[metricKey]
           const value = latest?.latest?.[metricKey]
           const isOnline = latest?.active ?? false
-          const headline = !isOnline ? 'No hay conexion' : value == null ? 'Sin dato' : formatMetricValue(value, metric.unit)
+          const headline = !isOnline ? 'No hay conexión' : value == null ? 'Sin dato' : formatMetricValue(value, metric.unit)
 
           return (
             <Link
@@ -101,9 +101,9 @@ export function ConsoleHomePage() {
               <p className="mt-4 font-display text-4xl text-white">{headline}</p>
               <p className="mt-3 text-sm text-slate-300">
                 {!isOnline
-                  ? 'La estacion no esta reportando dentro de la ventana operativa.'
+                  ? 'La estación no está reportando dentro de la ventana operativa.'
                   : value == null
-                    ? 'El ultimo paquete llego sin esta lectura. Abre el diagnostico del sensor para revisarlo.'
+                    ? 'El último paquete llegó sin esta lectura. Abre el diagnóstico del sensor para revisarlo.'
                     : 'Lectura reciente disponible. Abre la vista individual para estudiar la serie y sus fallas.'}
               </p>
             </Link>

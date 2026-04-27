@@ -33,14 +33,14 @@
 
 namespace Config
 {
-  const char *WIFI_SSID = "WIFI";
-  const char *WIFI_PASSWORD = "CLAVE_WIFI";
+  const char *WIFI_SSID = "familia_de_leon.";
+  const char *WIFI_PASSWORD = "Sh4rondlm";
 
   // Cambia esta URL por la IP o el host del backend que sirve la API.
   // El ESP32 no se conecta directamente a la base de datos, solo al backend.
   // Ejemplo local: "http://192.168.0.50/api/sensor-data"
   // Ejemplo remoto: "https://weather-station-fjjr.onrender.com/api/sensor-data"
-  const char *API_URL = "http://192.168.0.50/api/sensor-data";
+  const char *API_URL = "https://weather-station-fjjr.onrender.com/api/sensor-data";
   const char *API_KEY = "m1k1u-sensor-key";
   const char *STATION_ID = "M1K1U-001";
 
@@ -293,27 +293,69 @@ void logPacket(const TelemetryPacket &packet)
   printDivider();
   Serial.print(F("[PACKET] Estacion: "));
   Serial.println(packet.stationId);
-
+  delay(1500);
+  Serial.print("t0.txt=");
+  Serial.print("\"");
   Serial.print(F("  Temperatura: "));
-  Serial.println(packet.hasTemperature ? String(packet.temperature) + " C" : "sin dato");
+  Serial.println(packet.hasTemperature ? String(packet.temperature) + " C" : "sin dato" );
+  Serial.print("\"");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
 
+  delay(1500);
   Serial.print(F("  Presion: "));
+  Serial.print("t4.txt=");
+  Serial.print("\"");
   Serial.println(packet.hasPressure ? String(packet.pressure) + " hPa" : "sin dato");
+  Serial.print("\"");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
 
+  delay(1500);
   Serial.print(F("  Altitud: "));
+  Serial.print("t2.txt=");
+  Serial.print("\"");
   Serial.println(packet.hasAltitude ? String(packet.altitude) + " m" : "sin dato");
-
+  Serial.print("\"");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
+  
+  delay(1500);
   Serial.print(F("  Luminosidad: "));
+  Serial.print("t6.txt=");
+  Serial.print("\"");
   Serial.println(packet.hasLuminosity ? String(packet.luminosity) + " lux" : "sin dato");
-
+  Serial.print("\"");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
+  
+  delay(1500);
   Serial.print(F("  Lluvia analogica: "));
   Serial.println(packet.hasRainAnalog ? String(packet.rainAnalog) + " raw" : "sin dato");
 
+  delay(1500);
   Serial.print(F("  Lluvia digital: "));
+  Serial.print("t3.txt=");
+  Serial.print("\"");
   Serial.println(packet.hasRainDigital ? packet.rainDigital : "sin dato");
+  Serial.print("\"");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
 
+  delay(1500);
   Serial.print(F("  Velocidad del viento: "));
+  Serial.print("t5.txt=");
+  Serial.print("\"");
   Serial.println(packet.hasWindSpeed ? String(packet.windSpeed) + " km/h" : "sin dato");
+  Serial.print("\"");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
 }
 
 String buildPayloadJson(const TelemetryPacket &packet)
@@ -435,7 +477,4 @@ void loop()
   logPacket(packet);
   const bool sent = sendTelemetry(packet);
 
-  Serial.println(sent ? F("[CICLO] Telemetria enviada correctamente.") : F("[CICLO] Telemetria no enviada."));
-  printDivider();
-  Serial.println();
-}
+  Serial.println(sent ? F("[CICLO] Telemetria enviada corr

@@ -36,7 +36,7 @@ def require_sensor_api_key(
     if x_api_key != settings.sensor_api_key:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="API key invalida para la estacion.",
+            detail="API key inválida para la estación.",
         )
 
 

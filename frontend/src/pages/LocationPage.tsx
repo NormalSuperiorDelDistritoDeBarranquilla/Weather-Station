@@ -61,7 +61,7 @@ export function LocationPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <StatusBadge label={location.city} tone="info" />
                 <StatusBadge label={location.region} tone="neutral" />
-                <StatusBadge label={latest?.active ? 'Estacion activa' : 'Sin conexion'} tone={latest?.active ? 'success' : 'danger'} />
+                <StatusBadge label={latest?.active ? 'Estación activa' : 'Sin conexión'} tone={latest?.active ? 'success' : 'danger'} />
               </div>
             </div>
           </article>
@@ -126,11 +126,11 @@ export function LocationPage() {
           <article className="panel p-8">
             <div className="flex items-center gap-3 text-cyan-200">
               <MapPin className="h-5 w-5" />
-              <span className="text-xs uppercase tracking-[0.24em]">Por que mostrar la ubicacion</span>
+              <span className="text-xs uppercase tracking-[0.24em]">Por qué mostrar la ubicación</span>
             </div>
             <h3 className="mt-6 font-display text-3xl text-white">Una estacion visible inspira mas confianza que una telemetria sin territorio.</h3>
             <p className="mt-4 text-sm leading-7 text-slate-300">
-              Esta pagina existe para que jurados, visitantes o usuarios entiendan que la plataforma no es solo una
+              Esta página existe para que jurados, visitantes o usuarios entiendan que la plataforma no es solo una
               interfaz bonita: responde a un punto geografico concreto y a un comportamiento ambiental real.
             </p>
           </article>

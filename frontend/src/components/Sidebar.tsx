@@ -34,12 +34,12 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     ? 'Sincronizando estado'
     : hasConnection
       ? 'Estacion activa'
-      : 'No hay conexion'
+      : 'No hay conexión'
   const statusDescription = latestQuery.isLoading
-    ? 'Consultando el estado operativo de la estacion y el ultimo paquete recibido.'
+    ? 'Consultando el estado operativo de la estación y el último paquete recibido.'
     : latest?.last_seen
-      ? `Ultimo paquete ${formatDateTime(latest.last_seen)}. ${hasConnection ? 'La estacion sigue reportando.' : 'La ventana operativa expiro y se espera un nuevo envio desde Arduino o ESP32.'}`
-      : 'Todavia no ha llegado ninguna lectura valida. El backend queda a la espera del primer POST del microcontrolador.'
+      ? `Último paquete ${formatDateTime(latest.last_seen)}. ${hasConnection ? 'La estación sigue reportando.' : 'La ventana operativa expiró y se espera un nuevo envío desde Arduino o ESP32.'}`
+      : 'Todavía no ha llegado ninguna lectura válida. El backend queda a la espera del primer POST del microcontrolador.'
   const StatusIcon = hasConnection ? Radio : WifiOff
 
   return (

@@ -36,7 +36,7 @@ export function HomePage() {
   const rainDigitalStatus = latest?.latest?.rain_digital ?? 'Sin dato'
   const hasSelectedValue = selectedState?.value !== null && selectedState?.value !== undefined
   const selectedValueText = !isStationOnline
-    ? 'Sin conexion'
+    ? 'Sin conexión'
     : hasSelectedValue
       ? formatMetricValue(selectedState?.value, selectedMetricConfig.unit)
       : 'Sin dato'
@@ -62,7 +62,7 @@ export function HomePage() {
             <div className="relative">
               <span className="pill">Portada publica de la estacion</span>
               <div className="mt-6 flex flex-wrap gap-3">
-                <StatusBadge label={isStationOnline ? 'Transmision activa' : 'Sin conexion'} tone={isStationOnline ? 'success' : 'danger'} />
+                <StatusBadge label={isStationOnline ? 'Transmision activa' : 'Sin conexión'} tone={isStationOnline ? 'success' : 'danger'} />
                 <StatusBadge label="Panel abierto sin login" tone="info" />
                 <StatusBadge label={location.neighborhood} tone="neutral" />
               </div>
@@ -97,7 +97,7 @@ export function HomePage() {
                   <p className="mt-3 text-sm leading-6 text-slate-300">
                     {isStationOnline
                       ? 'La estacion sigue dentro de la ventana operativa definida para la telemetria.'
-                      : 'No hay paquete reciente todavia. La portada se actualizara apenas llegue una nueva transmision.'}
+                      : 'No hay paquete reciente todavía. La portada se actualizará apenas llegue una nueva transmisión.'}
                   </p>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export function HomePage() {
                     const state = latest?.metric_states[metricKey]
                     const metricHasValue = state?.value !== null && state?.value !== undefined
                     const value = !isStationOnline
-                      ? 'Sin conexion'
+                      ? 'Sin conexión'
                       : metricHasValue
                         ? formatMetricValue(state?.value, metric.unit)
                         : 'Sin dato'
@@ -172,7 +172,7 @@ export function HomePage() {
                         <p className="mt-2 text-sm text-slate-300">
                           {metricHasValue && isStationOnline
                             ? `${state?.status_label ?? 'Disponible'} | Promedio 24h ${formatMetricValue(stats?.metrics[metricKey]?.avg, metric.unit)}`
-                            : 'Sin lectura valida todavia para esta variable.'}
+                            : 'Sin lectura válida todavía para esta variable.'}
                         </p>
                       </button>
                     )
@@ -259,7 +259,7 @@ export function HomePage() {
             <h3 className="mt-4 font-display text-3xl text-white">Fondos, territorio y atmosfera para comunicar el proyecto</h3>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
               La capa publica ya funciona como vitrina visual del proyecto: se entiende donde opera la estacion, que
-              variables monitorea y por que la plataforma se presenta como una solucion tecnologica seria.
+              variables monitorea y por qué la plataforma se presenta como una solución tecnológica seria.
             </p>
           </div>
           <PhotoGalleryPlaceholder />
@@ -295,7 +295,7 @@ export function HomePage() {
               </div>
               <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Estado</p>
-                <p className="mt-3 font-display text-3xl text-white">{latest?.active_label ?? 'Sin conexion'}</p>
+                <p className="mt-3 font-display text-3xl text-white">{latest?.active_label ?? 'Sin conexión'}</p>
               </div>
               <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Estacion</p>

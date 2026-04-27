@@ -77,7 +77,7 @@ export function ChartsPage() {
         ) : (
           <>
             Sin telemetria real en este rango.{' '}
-            <span className="font-semibold text-white">Las graficas se activaran cuando llegue el primer paquete valido.</span>
+            <span className="font-semibold text-white">Las gráficas se activarán cuando llegue el primer paquete válido.</span>
           </>
         )}
       </section>

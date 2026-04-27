@@ -200,7 +200,7 @@ export function SensorDetailPage() {
             <span className="text-xs uppercase tracking-[0.24em]">Serie temporal del sensor</span>
           </div>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-300">
-            La grafica deja huecos cuando el paquete llega sin esta metrica. Asi puedes diferenciar una caida de
+            La gráfica deja huecos cuando el paquete llega sin esta métrica. Así puedes diferenciar una caída de
             conexion general de una falla puntual del sensor.
           </p>
           <div className="mt-6 h-[22rem]">

@@ -44,7 +44,7 @@ export function AboutPage() {
         <span className="pill">Acerca del proyecto</span>
         <h1 className="mt-6 font-display text-5xl text-white">Arquitectura funcional y escalable para M1K1U</h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-          Esta base esta pensada como producto real: separacion limpia por capas, persistencia local robusta, UI
+          Esta base está pensada como producto real: separación limpia por capas, persistencia local robusta, UI
           moderna y contratos preparados para sumar nuevas variables ambientales sin rehacer la plataforma.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">

@@ -27,14 +27,14 @@ export function MetricCard({ metricKey, state, stats, trend, stationActive }: Me
   const Icon = config.icon
   const hasValue = state.value !== null && state.value !== undefined
   const hasTrend = trend.some((point) => point.value !== null && point.value !== undefined)
-  const displayValue = !stationActive ? 'No hay conexion' : hasValue ? formatMetricValue(state.value, config.unit) : 'Sin dato'
-  const badgeLabel = !stationActive ? 'Sin conexion' : hasValue ? state.status_label : 'Falla de lectura'
+  const displayValue = !stationActive ? 'No hay conexión' : hasValue ? formatMetricValue(state.value, config.unit) : 'Sin dato'
+  const badgeLabel = !stationActive ? 'Sin conexión' : hasValue ? state.status_label : 'Falla de lectura'
   const badgeTone = !stationActive ? 'danger' : hasValue ? toneFromStatus(state.status) : 'warning'
   const supportText = !stationActive
-    ? 'La estacion no esta reportando dentro de la ventana operativa.'
+    ? 'La estación no está reportando dentro de la ventana operativa.'
     : hasValue
       ? `Promedio: ${formatMetricValue(stats?.avg, config.unit)}`
-      : 'El ultimo paquete llego sin este campo o la lectura del sensor fallo.'
+      : 'El último paquete llegó sin este campo o la lectura del sensor falló.'
   const formatTooltipValue = (value: number | string | ReadonlyArray<number | string> | undefined) =>
     formatMetricValue(typeof value === 'number' ? value : Number(value), config.unit)
   const formatTooltipLabel = (value: unknown) =>
