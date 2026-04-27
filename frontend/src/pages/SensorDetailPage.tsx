@@ -120,14 +120,14 @@ export function SensorDetailPage() {
             <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
               <div className="flex items-center gap-3 text-cyan-200">
                 <Activity className="h-4 w-4" />
-                <span className="text-xs uppercase tracking-[0.24em]">Ultimo paquete</span>
+                <span className="text-xs uppercase tracking-[0.24em]">Último paquete</span>
               </div>
               <p className="mt-4 font-display text-3xl text-white">{formatDateTime(detail?.last_packet_at)}</p>
             </div>
             <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
               <div className="flex items-center gap-3 text-emerald-200">
                 <Cpu className="h-4 w-4" />
-                <span className="text-xs uppercase tracking-[0.24em]">Ultima lectura valida</span>
+                <span className="text-xs uppercase tracking-[0.24em]">Última lectura válida</span>
               </div>
               <p className="mt-4 font-display text-3xl text-white">{formatDateTime(detail?.last_valid_at)}</p>
             </div>
@@ -146,14 +146,14 @@ export function SensorDetailPage() {
               ? detail?.latest_value == null
                 ? 'Sin dato'
                 : formatMetricValue(detail.latest_value, metric.unit)
-              : 'No hay conexion'}
+              : 'No hay conexión'}
           </p>
           <p className="mt-3 text-sm text-slate-300">
             {detail?.station_active
               ? detail?.current_packet_has_value
-                ? 'Valor recibido correctamente en el ultimo paquete.'
-                : 'El ultimo paquete llego sin este campo.'
-              : 'La estacion esta fuera de la ventana operativa.'}
+                ? 'Valor recibido correctamente en el último paquete.'
+                : 'El último paquete llegó sin este campo.'
+              : 'La estación está fuera de la ventana operativa.'}
           </p>
         </article>
 
@@ -201,7 +201,7 @@ export function SensorDetailPage() {
           </div>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-300">
             La gráfica deja huecos cuando el paquete llega sin esta métrica. Así puedes diferenciar una caída de
-            conexion general de una falla puntual del sensor.
+            conexión general de una falla puntual del sensor.
           </p>
           <div className="mt-6 h-[22rem]">
             <ResponsiveContainer width="100%" height="100%">

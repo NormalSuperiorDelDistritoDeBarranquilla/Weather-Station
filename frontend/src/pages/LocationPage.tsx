@@ -86,7 +86,7 @@ export function LocationPage() {
               <div className="rounded-[1.7rem] border border-white/10 bg-white/5 p-5">
                 <div className="flex items-center gap-3 text-emerald-200">
                   <MapPin className="h-4 w-4" />
-                  <span className="text-xs uppercase tracking-[0.24em]">Ultima transmision</span>
+                  <span className="text-xs uppercase tracking-[0.24em]">Última transmisión</span>
                 </div>
                 <p className="mt-4 font-display text-3xl text-white">{formatDateTime(latest?.last_seen)}</p>
                 <p className="mt-3 text-sm leading-6 text-slate-300">
@@ -128,7 +128,7 @@ export function LocationPage() {
               <MapPin className="h-5 w-5" />
               <span className="text-xs uppercase tracking-[0.24em]">Por qué mostrar la ubicación</span>
             </div>
-            <h3 className="mt-6 font-display text-3xl text-white">Una estacion visible inspira mas confianza que una telemetria sin territorio.</h3>
+            <h3 className="mt-6 font-display text-3xl text-white">Una estación visible inspira más confianza que una telemetría sin territorio.</h3>
             <p className="mt-4 text-sm leading-7 text-slate-300">
               Esta página existe para que jurados, visitantes o usuarios entiendan que la plataforma no es solo una
               interfaz bonita: responde a un punto geografico concreto y a un comportamiento ambiental real.

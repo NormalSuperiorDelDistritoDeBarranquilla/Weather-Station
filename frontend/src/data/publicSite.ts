@@ -45,7 +45,7 @@ export const publicFeatureCards: PublicFeatureCard[] = [
   {
     to: '/estado-en-vivo',
     title: 'Estado en vivo',
-    description: 'Vista publica de la estacion, ultimo paquete recibido y lectura instantanea por variable.',
+    description: 'Vista pública de la estación, último paquete recibido y lectura instantánea por variable.',
     eyebrow: 'Panel abierto',
     icon: Activity,
   },
@@ -188,7 +188,7 @@ export const telemetryFlow: PublicTelemetryStep[] = [
 export const publicLoginSlides = [
   {
     title: 'Lecturas maestras del ESP32 en tiempo real',
-    subtitle: 'La plataforma ahora sigue exactamente el set de sensores que define el firmware de la estacion.',
+    subtitle: 'La plataforma ahora sigue exactamente el set de sensores que define el firmware de la estación.',
     image:
       'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80',
     eyebrow: 'Telemetria maestra',

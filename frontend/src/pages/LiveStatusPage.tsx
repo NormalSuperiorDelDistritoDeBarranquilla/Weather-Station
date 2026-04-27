@@ -43,7 +43,7 @@ export function LiveStatusPage() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              Este apartado concentra la lectura visible del sistema: ultimo paquete recibido, disponibilidad de cada
+              Este apartado concentra la lectura visible del sistema: último paquete recibido, disponibilidad de cada
               sensor y actividad operativa general sin necesidad de iniciar sesion.
             </p>
 
@@ -51,10 +51,10 @@ export function LiveStatusPage() {
               <div className="apple-float-card rounded-[1.8rem] p-5 max-w-xs">
                 <div className="flex items-center gap-3 text-emerald-200">
                   <Clock3 className="h-4 w-4" />
-                  <span className="text-xs uppercase tracking-[0.24em]">Ultimo paquete</span>
+                  <span className="text-xs uppercase tracking-[0.24em]">Último paquete</span>
                 </div>
                 <p className="mt-4 font-display text-3xl text-white">{formatDateTime(latest?.last_seen)}</p>
-                <p className="mt-3 text-sm text-slate-300">Fecha y hora real de la ultima transmision procesada.</p>
+                <p className="mt-3 text-sm text-slate-300">Fecha y hora real de la última transmisión procesada.</p>
               </div>
             </div>
           </article>
@@ -110,7 +110,7 @@ export function LiveStatusPage() {
                     <p className="text-sm uppercase tracking-[0.24em] text-slate-300/75">{config.label}</p>
                     <h3 className="mt-4 font-display text-4xl text-white">
                       {!isStationOnline
-                        ? 'Sin conexion'
+                        ? 'Sin conexión'
                         : hasValue
                           ? formatMetricValue(state?.value, config.unit)
                           : 'Sin dato'}
@@ -167,7 +167,7 @@ export function LiveStatusPage() {
                     </div>
                     <p className="mt-3 text-sm leading-6 text-slate-300">
                       {hasValue
-                        ? 'La variable llego en el ultimo paquete procesado por el backend.'
+                        ? 'La variable llegó en el último paquete procesado por el backend.'
                         : 'El último paquete no trajo este campo o aún no existe una lectura válida.'}
                     </p>
                   </div>

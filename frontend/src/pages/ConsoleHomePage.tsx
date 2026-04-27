@@ -39,12 +39,12 @@ export function ConsoleHomePage() {
               Bienvenido al centro de monitoreo de M1K1U.
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
-              Esta vista funciona como portada interna del sistema: te ubica, resume el estado de la estacion y te
+              Esta vista funciona como portada interna del sistema: te ubica, resume el estado de la estación y te
               lleva rapido al dashboard analitico, graficas, registros historicos y diagnosticos por sensor.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <StatusBadge label={latest?.active_label ?? 'Sin conexión'} tone={latest?.active ? 'success' : 'danger'} />
-              <StatusBadge label={`Estacion ${latest?.station_id ?? '--'}`} tone="info" />
+              <StatusBadge label={`Estación ${latest?.station_id ?? '--'}`} tone="info" />
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -63,7 +63,7 @@ export function ConsoleHomePage() {
           <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
             <div className="flex items-center gap-3 text-cyan-200">
               <Clock3 className="h-4 w-4" />
-              <span className="text-xs uppercase tracking-[0.24em]">Ultimo reporte</span>
+              <span className="text-xs uppercase tracking-[0.24em]">Último reporte</span>
             </div>
             <p className="mt-4 font-display text-3xl text-white">{formatDateTime(latest?.last_seen)}</p>
           </div>

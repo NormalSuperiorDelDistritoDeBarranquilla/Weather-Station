@@ -273,7 +273,7 @@ export function DashboardPage() {
               <p className="mt-2 text-sm text-slate-300">La web ya no dibuja variables que no existan en el firmware maestro.</p>
             </div>
             <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-              <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Ultimo paquete</p>
+              <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Último paquete</p>
               <p className="mt-3 font-display text-3xl text-white">{formatDateTime(latest?.last_seen)}</p>
               <p className="mt-2 text-sm text-slate-300">Cada sincronizacion refleja exactamente el set de datos del microcontrolador.</p>
             </div>
@@ -401,7 +401,7 @@ export function DashboardPage() {
               <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
                 <div className="flex items-center gap-3 text-cyan-200">
                   <Activity className="h-4 w-4" />
-                  <span className="text-sm font-semibold text-white">Ultimo dato recibido</span>
+                  <span className="text-sm font-semibold text-white">Último dato recibido</span>
                 </div>
                 <p className="mt-3 text-sm text-slate-300">{formatDateTime(latest?.last_seen)}</p>
                 <p className="mt-2 text-sm text-slate-400">

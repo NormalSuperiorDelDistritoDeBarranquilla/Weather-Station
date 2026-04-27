@@ -33,7 +33,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const statusTitle = latestQuery.isLoading
     ? 'Sincronizando estado'
     : hasConnection
-      ? 'Estacion activa'
+      ? 'Estación activa'
       : 'No hay conexión'
   const statusDescription = latestQuery.isLoading
     ? 'Consultando el estado operativo de la estación y el último paquete recibido.'
@@ -115,7 +115,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             <p className="mt-3 text-sm leading-6 text-slate-300">{statusDescription}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-full border border-white/10 bg-slate-950/45 px-3 py-1 text-xs text-slate-200">
-                {latest?.station_id ?? 'Sin estacion'}
+                {latest?.station_id ?? 'Sin estación'}
               </span>
               <span className="rounded-full border border-white/10 bg-slate-950/45 px-3 py-1 text-xs text-slate-200">
                 {latest?.active_label ?? 'Esperando telemetria'}

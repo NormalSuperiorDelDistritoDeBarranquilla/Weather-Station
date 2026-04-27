@@ -111,7 +111,7 @@ export function LoginPage() {
                   <div className="rounded-[1.7rem] border border-white/10 bg-slate-950/40 p-5 backdrop-blur-xl">
                     <div className="flex items-center gap-3 text-emerald-200">
                       <Clock3 className="h-4 w-4" />
-                      <span className="text-xs uppercase tracking-[0.24em]">Ultima lectura</span>
+                      <span className="text-xs uppercase tracking-[0.24em]">Última lectura</span>
                     </div>
                     <p className="mt-3 font-display text-2xl text-white">{formatDateTime(latest?.last_seen)}</p>
                     <p className="mt-2 text-sm text-slate-300">Dato operativo mas reciente procesado por el backend.</p>
@@ -159,7 +159,7 @@ export function LoginPage() {
               <h2 className="mt-6 font-display text-4xl text-white sm:text-5xl">Acceso al centro de control</h2>
               <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300">
                 Inicia sesion para entrar al dashboard privado, revisar historicos, alertas, diagnosticos y estado
-                individual de cada sensor conectado a la estacion M1K1U.
+                individual de cada sensor conectado a la estación M1K1U.
               </p>
 
               <form className="mt-8 space-y-5" onSubmit={handleSubmit}>

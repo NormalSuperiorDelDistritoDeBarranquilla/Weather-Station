@@ -45,7 +45,7 @@ export function AlertsPanel({ alerts, compact = false, title = 'Alertas activas'
       <div className="space-y-4 bg-[#0b1120] p-6">
         {visibleAlerts.length === 0 ? (
           <div className="rounded-[1.5rem] border border-emerald-400/20 bg-[#0d241d] p-5 text-sm text-emerald-100">
-            Todo estable por ahora. La estacion no reporta condiciones fuera de los umbrales definidos.
+            Todo estable por ahora. La estación no reporta condiciones fuera de los umbrales definidos.
           </div>
         ) : null}
 

@@ -71,7 +71,7 @@ export function ChartsPage() {
       <section className="panel-soft p-5 text-sm text-slate-300">
         {hasRecords ? (
           <>
-            Ultima lectura dentro del rango:{' '}
+            Última lectura dentro del rango:{' '}
             <span className="font-semibold text-white">{formatDateTime(data.at(-1)?.timestamp)}</span>
           </>
         ) : (

@@ -20,7 +20,7 @@ export function DataTable({ data, page, totalPages, total, onPageChange }: DataT
       <div className="flex flex-col gap-3 border-b border-white/10 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h3 className="font-display text-2xl text-white">Registros individuales</h3>
-          <p className="text-sm text-slate-300">Cada lectura enviada por la estacion queda almacenada localmente.</p>
+          <p className="text-sm text-slate-300">Cada lectura enviada por la estación queda almacenada localmente.</p>
         </div>
         <div className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300">
           <Search className="h-4 w-4 text-cyan-200" />
@@ -33,7 +33,7 @@ export function DataTable({ data, page, totalPages, total, onPageChange }: DataT
           <thead className="bg-white/5 text-slate-300">
             <tr>
               <th className="px-6 py-4 font-medium">Fecha y hora</th>
-              <th className="px-6 py-4 font-medium">Estacion</th>
+              <th className="px-6 py-4 font-medium">Estación</th>
               <th className="px-6 py-4 font-medium">Temperatura</th>
               <th className="px-6 py-4 font-medium">Presion</th>
               <th className="px-6 py-4 font-medium">Altitud</th>

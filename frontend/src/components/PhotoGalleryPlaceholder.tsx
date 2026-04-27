@@ -4,7 +4,7 @@ const cards = [
   {
     icon: MapPin,
     title: 'Punto de captura',
-    description: 'Barrio La Playa, Barranquilla, Atlantico, Colombia como origen visible de la estacion.',
+    description: 'Barrio La Playa, Barranquilla, Atlántico, Colombia como origen visible de la estación.',
     image:
       'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
   },
