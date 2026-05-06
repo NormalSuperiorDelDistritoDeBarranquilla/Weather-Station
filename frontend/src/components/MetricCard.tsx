@@ -85,14 +85,14 @@ export function MetricCard({ metricKey, state, stats, trend, stationActive }: Me
             </ResponsiveContainer>
           ) : (
             <div className="flex h-full items-center justify-center rounded-[1.25rem] border border-dashed border-white/10 bg-slate-950/25 text-sm text-slate-400">
-              Sin serie valida para este sensor
+              Sin serie válida para este sensor
             </div>
           )}
         </div>
 
         <div className="mt-4 flex items-center justify-between text-sm text-slate-300">
-          <span>{stationActive ? 'Rango 24h' : 'Esperando nueva telemetria'}</span>
-          <span>{stationActive && hasValue ? formatRelativeDelta(stats?.delta_from_average, config.unit) : 'Abrir diagnostico'}</span>
+          <span>{stationActive ? 'Rango 24h' : 'Esperando nueva telemetría'}</span>
+          <span>{stationActive && hasValue ? formatRelativeDelta(stats?.delta_from_average, config.unit) : 'Abrir diagnóstico'}</span>
         </div>
       </article>
     </Link>

@@ -1,25 +1,25 @@
 # M1K1U
 
-Plataforma web IoT para una estacion meteorologica con frontend en React, backend en FastAPI y persistencia local en SQLite. El sistema recibe telemetria desde un ESP32, la almacena dentro del mismo proyecto y la visualiza en una interfaz tipo centro de monitoreo.
+Plataforma web IoT para una estación meteorológica con frontend en React, backend en FastAPI y persistencia local en SQLite. El sistema recibe telemetría desde un ESP32, la almacena dentro del mismo proyecto y la visualiza en una interfaz tipo centro de monitoreo.
 
 ## Stack
 
 - Frontend: React + TypeScript + Vite + Tailwind CSS
 - Backend: FastAPI + SQLAlchemy + Alembic
 - Base de datos: SQLite embebida en `backend/data/m1k1u.db`
-- Autenticacion: JWT en cookie HttpOnly
-- Graficas: Recharts
-- Ingestion IoT: endpoint REST protegido con `X-API-Key`
+- Autenticación: JWT en cookie HttpOnly
+- Gráficas: Recharts
+- Ingestión IoT: endpoint REST protegido con `X-API-Key`
 
-## Caracteristicas principales
+## Características principales
 
-- Landing publica con datos reales o estado vacio si aun no hay transmision
+- Landing pública con datos reales o estado vacío si aún no hay transmisión
 - Login real con usuario inicial `admin / admin123`
-- Contrasena almacenada hasheada
-- Dashboard protegido con estado de estacion, metricas y tendencias
-- Graficas historicas por variable con filtros `24h`, `7d`, `30d` y `all`
-- Historial tabular con paginacion y filtros
-- Diagnostico individual por sensor
+- Contraseña almacenada hasheada
+- Dashboard protegido con estado de estación, métricas y tendencias
+- Gráficas históricas por variable con filtros `24h`, `7d`, `30d` y `all`
+- Historial tabular con paginación y filtros
+- Diagnóstico individual por sensor
 - Alertas operativas y ambientales basadas en el set real del ESP32
 - Contrato maestro alineado con `arduino.ino`
 
@@ -27,7 +27,7 @@ Plataforma web IoT para una estacion meteorologica con frontend en React, backen
 
 El archivo `arduino.ino` define los sensores que la plataforma muestra hoy.
 
-Metricas activas:
+Métricas activas:
 
 - `temperature`
 - `pressure`
@@ -37,12 +37,12 @@ Metricas activas:
 - `rain_digital`
 - `wind_speed`
 
-Sensores fisicos:
+Sensores físicos:
 
 - BMP280
 - BH1750
 - MH-RD
-- anemometro
+- anemómetro
 
 ## Estructura del proyecto
 
@@ -81,7 +81,7 @@ GUIA_TECNICA.md
 - Node.js 22+
 - npm 10+
 
-## Instalacion y ejecucion
+## Instalación y ejecución
 
 ### 1. Backend
 
@@ -95,7 +95,7 @@ python -m uvicorn app.main:app --reload
 Notas:
 
 - Si no copias `.env`, el backend usa defaults seguros para desarrollo.
-- La base `backend/data/m1k1u.db` se crea automaticamente en el primer arranque.
+- La base `backend/data/m1k1u.db` se crea automáticamente en el primer arranque.
 - El seed crea solo el usuario admin.
 
 ### 2. Frontend
@@ -119,7 +119,7 @@ Backend:
 ## Credenciales iniciales
 
 - Usuario: `admin`
-- Contrasena: `admin123`
+- Contraseña: `admin123`
 
 ## Variables de entorno
 
@@ -143,17 +143,17 @@ Archivo: `frontend/.env`
 VITE_API_URL=http://127.0.0.1:8000/api
 ```
 
-## Arquitectura rapida
+## Arquitectura rápida
 
 - `frontend/` consume la API con `axios` y `withCredentials`
-- `backend/` expone autenticacion, lectura historica y recepcion de datos de sensores
-- `SQLite` guarda usuarios y telemetria dentro del mismo proyecto
+- `backend/` expone autenticación, lectura histórica y recepción de datos de sensores
+- `SQLite` guarda usuarios y telemetría dentro del mismo proyecto
 - `Alembic` administra el esquema
 - `arduino.ino` define el contrato maestro y `METRIC_REGISTRY` replica ese set en backend y frontend
 
 ## Endpoints principales
 
-### Autenticacion
+### Autenticación
 
 - `POST /api/auth/login`
 - `POST /api/auth/logout`
@@ -171,9 +171,9 @@ VITE_API_URL=http://127.0.0.1:8000/api
 
 Notas:
 
-- `latest`, `history`, `stats`, `alerts` y `detail` requieren sesion autenticada
+- `latest`, `history`, `stats`, `alerts` y `detail` requieren sesión autenticada
 - `POST /api/sensor-data` usa `X-API-Key`
-- `public/landing` es publico
+- `public/landing` es público
 
 ## Ejemplo JSON para ESP32
 
@@ -190,7 +190,7 @@ Notas:
 }
 ```
 
-Si `timestamp` no se envia, el backend lo genera automaticamente. Si llega sin zona horaria, se interpreta en `America/Bogota` y se normaliza a UTC.
+Si `timestamp` no se envía, el backend lo genera automáticamente. Si llega sin zona horaria, se interpreta en `America/Bogota` y se normaliza a UTC.
 
 ## Aliases aceptados por el backend
 
@@ -221,7 +221,7 @@ curl -X POST http://localhost:8000/api/sensor-data \
   -d "{\"station_id\":\"M1K1U-001\",\"temperature\":28.5,\"pressure\":1012.3,\"altitude\":12.4,\"luminosity\":845.3,\"rain_analog\":2780,\"rain_digital\":\"Seco\",\"wind_speed\":14.7}"
 ```
 
-### Consultar la ultima lectura autenticado
+### Consultar la última lectura autenticado
 
 En Postman:
 
@@ -229,18 +229,18 @@ En Postman:
 2. Conserva la cookie devuelta por el backend
 3. Ejecuta `GET /api/sensor-data/latest`
 
-## Integracion con ESP32
+## Integración con ESP32
 
 El flujo esperado es:
 
 1. El ESP32 se conecta por WiFi
-2. Lee BMP280, BH1750, MH-RD y anemometro
+2. Lee BMP280, BH1750, MH-RD y anemómetro
 3. Construye un JSON con las variables disponibles
-4. Lo envia a `POST /api/sensor-data`
+4. Lo envía a `POST /api/sensor-data`
 5. Incluye el header `X-API-Key`
 6. El backend valida, persiste y el dashboard lo refleja en el siguiente ciclo de polling
 
-Nota critica:
+Nota crítica:
 
 - desde el microcontrolador no debes usar `localhost` ni `127.0.0.1`
 - `API_URL` debe apuntar a la IP LAN real del equipo donde corre FastAPI
@@ -248,30 +248,30 @@ Nota critica:
 
 ## Alertas implementadas hoy
 
-El sistema deriva alertas activas desde la ultima lectura y el historial reciente usando el set maestro del ESP32:
+El sistema deriva alertas activas desde la última lectura y el historial reciente usando el set maestro del ESP32:
 
-- estacion sin reporte reciente
+- estación sin reporte reciente
 - temperatura alta o extrema
-- riesgo de congelacion o helada
-- descenso brusco de presion
+- riesgo de congelación o helada
+- descenso brusco de presión
 - viento fuerte o extremo
 - lluvia detectada por el canal digital del MH-RD
-- saturacion del canal analogico de lluvia
+- saturación del canal analógico de lluvia
 - pérdida de datos, campo ausente en el último paquete o flatline por sensor
 
 Notas:
 
-- `rain_digital` se trata como estado discreto y se muestra en paneles y alertas, no en graficas numericas
-- las alertas de presion se basan en tendencia, no en valor absoluto
+- `rain_digital` se trata como estado discreto y se muestra en paneles y alertas, no en gráficas numéricas
+- las alertas de presión se basan en tendencia, no en valor absoluto
 - la UI actual solo refleja sensores presentes en `arduino.ino`
 
 ## Estado actual del proyecto
 
 - Backend funcional con contrato alineado al ESP32
-- Frontend funcional con metricas reales del sketch
+- Frontend funcional con métricas reales del sketch
 - Usuario admin autosembrado
 - SQLite integrada y sin dependencias externas
-- Landing publica consumiendo telemetria real o estado vacio si aun no hay transmision
+- Landing pública consumiendo telemetría real o estado vacío si aún no hay transmisión
 
 ## Comandos de verificacion
 

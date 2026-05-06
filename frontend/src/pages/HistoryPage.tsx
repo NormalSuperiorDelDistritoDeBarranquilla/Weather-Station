@@ -7,8 +7,8 @@ import type { HistoryRange } from '../types/api'
 
 const rangeOptions: Array<{ label: string; value: HistoryRange }> = [
   { label: '24 horas', value: '24h' },
-  { label: '7 dias', value: '7d' },
-  { label: '30 dias', value: '30d' },
+  { label: '7 días', value: '7d' },
+  { label: '30 días', value: '30d' },
   { label: 'Todos', value: 'all' },
 ]
 
@@ -44,8 +44,8 @@ export function HistoryPage() {
         <span className="pill">Historial operativo</span>
         <h1 className="mt-6 font-display text-4xl text-white">Consulta detallada de registros</h1>
         <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
-          Filtra por fecha, rango temporal y estacion para revisar unicamente lecturas reales persistidas desde la
-          telemetria recibida.
+          Filtra por fecha, rango temporal y estación para revisar únicamente lecturas reales persistidas desde la
+          telemetría recibida.
         </p>
       </section>
 
@@ -63,7 +63,7 @@ export function HistoryPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-sm text-slate-200">Buscar por estacion</span>
+            <span className="text-sm text-slate-200">Buscar por estación</span>
             <input
               className="input-shell w-full"
               value={search}
@@ -73,7 +73,7 @@ export function HistoryPage() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-sm text-slate-200">Filtro exacto de estacion</span>
+            <span className="text-sm text-slate-200">Filtro exacto de estación</span>
             <input
               className="input-shell w-full"
               value={stationId}

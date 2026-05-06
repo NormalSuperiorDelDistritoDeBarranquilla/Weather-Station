@@ -43,7 +43,7 @@ export function LoginPage() {
       await login({ username, password })
       navigate(redirectTo, { replace: true })
     } catch {
-      setError('No fue posible autenticar el acceso. Verifica usuario y contrasena.')
+      setError('No fue posible autenticar el acceso. Verifica usuario y contraseña.')
     } finally {
       setIsSubmitting(false)
     }
@@ -114,7 +114,7 @@ export function LoginPage() {
                       <span className="text-xs uppercase tracking-[0.24em]">Última lectura</span>
                     </div>
                     <p className="mt-3 font-display text-2xl text-white">{formatDateTime(latest?.last_seen)}</p>
-                    <p className="mt-2 text-sm text-slate-300">Dato operativo mas reciente procesado por el backend.</p>
+                    <p className="mt-2 text-sm text-slate-300">Dato operativo más reciente procesado por el backend.</p>
                   </div>
 
                   <div className="rounded-[1.7rem] border border-white/10 bg-slate-950/40 p-5 backdrop-blur-xl">
@@ -123,7 +123,7 @@ export function LoginPage() {
                       <span className="text-xs uppercase tracking-[0.24em]">Acceso</span>
                     </div>
                     <p className="mt-3 font-display text-2xl text-white">JWT HttpOnly</p>
-                    <p className="mt-2 text-sm text-slate-300">Sesion protegida para dashboard, alertas y analitica interna.</p>
+                    <p className="mt-2 text-sm text-slate-300">Sesión protegida para dashboard, alertas y analítica interna.</p>
                   </div>
                 </div>
 
@@ -155,10 +155,10 @@ export function LoginPage() {
             <div className="absolute right-0 top-0 h-56 w-56 rounded-full bg-cyan-400/12 blur-3xl" />
 
             <div className="relative">
-              <span className="pill">Sesion protegida</span>
+              <span className="pill">Sesión protegida</span>
               <h2 className="mt-6 font-display text-4xl text-white sm:text-5xl">Acceso al centro de control</h2>
               <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300">
-                Inicia sesion para entrar al dashboard privado, revisar historicos, alertas, diagnosticos y estado
+                Inicia sesión para entrar al dashboard privado, revisar históricos, alertas, diagnósticos y estado
                 individual de cada sensor conectado a la estación M1K1U.
               </p>
 
@@ -178,7 +178,7 @@ export function LoginPage() {
                 </label>
 
                 <label className="block space-y-2">
-                  <span className="text-sm text-slate-200">Contrasena</span>
+                  <span className="text-sm text-slate-200">Contraseña</span>
                   <div className="relative">
                     <LockKeyhole className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                     <input
@@ -208,7 +208,7 @@ export function LoginPage() {
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <Link to="/" className="rounded-[1.4rem] border border-white/10 bg-white/5 px-4 py-4 text-sm text-slate-300 transition hover:border-cyan-400/40 hover:text-white">
-                  Volver a la portada publica
+                  Volver a la portada pública
                 </Link>
                 <Link
                   to="/estado-en-vivo"

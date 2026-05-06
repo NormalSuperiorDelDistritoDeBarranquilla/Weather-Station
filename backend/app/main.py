@@ -37,7 +37,7 @@ async def lifespan(_: FastAPI):
 
 app = FastAPI(
     title="M1K1U API",
-    summary="Plataforma IoT meteorologica con FastAPI, SQLite y autenticacion segura.",
+    summary="Plataforma IoT meteorológica con FastAPI, SQLite y autenticación segura.",
     version="1.0.0",
     lifespan=lifespan,
 )

@@ -8,7 +8,7 @@ const sections = [
     icon: Cpu,
     title: 'Frontend y experiencia',
     content:
-      'React + TypeScript y Tailwind construyen una interfaz premium de centro de monitoreo, con rutas protegidas, dashboards, tablas y graficas historicas.',
+      'React + TypeScript y Tailwind construyen una interfaz premium de centro de monitoreo, con rutas protegidas, dashboards, tablas y gráficas históricas.',
   },
   {
     icon: DatabaseZap,
@@ -20,13 +20,13 @@ const sections = [
     icon: Lock,
     title: 'Seguridad basica real',
     content:
-      'El acceso administrativo utiliza JWT en cookie HttpOnly, contrasenas hasheadas y validacion de payloads. La ingestion de sensores se protege con API Key.',
+      'El acceso administrativo utiliza JWT en cookie HttpOnly, contraseñas hasheadas y validación de payloads. La ingestión de sensores se protege con API Key.',
   },
   {
     icon: Network,
     title: 'Integracion con sensores',
     content:
-      'Arduino, ESP32 o un microcontrolador puente pueden enviar datos via HTTP POST al endpoint REST definido para recibir telemetria climatica.',
+      'Arduino, ESP32 o un microcontrolador puente pueden enviar datos vía HTTP POST al endpoint REST definido para recibir telemetría climática.',
   },
 ]
 
@@ -35,7 +35,7 @@ export function AboutPage() {
     'Firmware modular por sensor',
     'Migraciones de esquema versionadas',
     'Nuevas reglas de alertas',
-    'Widgets y diagnosticos adicionales',
+    'Widgets y diagnósticos adicionales',
   ]
 
   return (

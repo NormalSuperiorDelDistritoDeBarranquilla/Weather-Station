@@ -32,8 +32,8 @@ const metricKeys = Object.keys(metricUI) as MetricKey[]
 const ranges: HistoryRange[] = ['24h', '7d', '30d', 'all']
 const rangeLabels: Record<HistoryRange, string> = {
   '24h': '24h',
-  '7d': '7 dias',
-  '30d': '30 dias',
+  '7d': '7 días',
+  '30d': '30 días',
   all: 'Todo',
 }
 
@@ -85,8 +85,8 @@ export function SensorDetailPage() {
               Sensor individual
             </span>
             <h1 className="mt-6 font-display text-4xl text-white sm:text-5xl">{detail?.label ?? metric.label}</h1>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">{detail?.description ?? 'Cargando diagnostico del sensor.'}</p>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">{detail?.narrative ?? 'Sincronizando diagnostico operativo...'}</p>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">{detail?.description ?? 'Cargando diagnóstico del sensor.'}</p>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">{detail?.narrative ?? 'Sincronizando diagnóstico operativo...'}</p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <StatusBadge

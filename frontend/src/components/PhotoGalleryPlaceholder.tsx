@@ -1,32 +1,37 @@
 import { Camera, MapPin, Radar } from 'lucide-react'
 
+import { sitePhotos } from '../data/publicSite'
+
 const cards = [
   {
     icon: MapPin,
     title: 'Punto de captura',
-    description: 'Barrio La Playa, Barranquilla, Atlántico, Colombia como origen visible de la estación.',
-    image:
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    description: 'La Playa aparece como lugar real, reconocible y ligado directamente al origen de la estación.',
+    image: sitePhotos.galleryCapture,
   },
   {
     icon: Radar,
-    title: 'Sensores y modulos',
-    description: 'Lenguaje visual para documentar hardware, calibracion y lectura ambiental en sitio.',
-    image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    title: 'Borde habitado',
+    description: 'El entorno construido junto al agua refuerza que la telemetría pertenece a un contexto humano y costero.',
+    image: sitePhotos.galleryHabitat,
   },
   {
     icon: Camera,
-    title: 'Operacion continua',
-    description: 'Escena pensada para comunicar monitoreo publico, tiempo real y trazabilidad del proyecto.',
-    image:
-      'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1200&q=80',
+    title: 'Comunidad costera',
+    description: 'La actividad local sobre el agua aporta cercanía, escala y vida al relato visual del proyecto.',
+    image: sitePhotos.galleryCommunity,
+  },
+  {
+    icon: Camera,
+    title: 'Frente de playa',
+    description: 'Una escena abierta y luminosa para mostrar el carácter costero del sitio donde opera M1K1U.',
+    image: sitePhotos.galleryBeach,
   },
 ]
 
 export function PhotoGalleryPlaceholder() {
   return (
-    <div className="grid gap-4 md:grid-cols-3">
+    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
       {cards.map((card, index) => {
         const Icon = card.icon
 

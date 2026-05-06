@@ -39,7 +39,7 @@ export function Navbar({ onMenuClick }: NavbarProps) {
             type="button"
             className="rounded-2xl border border-white/10 p-2 text-slate-200 lg:hidden"
             onClick={onMenuClick}
-            aria-label="Abrir menu lateral"
+            aria-label="Abrir menú lateral"
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -68,7 +68,7 @@ export function Navbar({ onMenuClick }: NavbarProps) {
             ) : null}
           </button>
           <button type="button" className="button-secondary !px-4 !py-2 text-sm" onClick={handleLogout}>
-            Cerrar sesion
+            Cerrar sesión
           </button>
 
           {isAlertsOpen ? (

@@ -60,14 +60,14 @@ def get_current_user(
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Sesion invalida o expirada.",
+            detail="Sesión inválida o expirada.",
         ) from exc
 
     username = payload.get("sub")
     if not username:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token invalido.",
+            detail="Token inválido.",
         )
 
     user = db.scalar(select(User).where(User.username == username))

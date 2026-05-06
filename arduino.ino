@@ -1,5 +1,5 @@
 #if !defined(ARDUINO_ARCH_ESP32)
-#error "Este sketch esta preparado para ESP32 con Arduino IDE."
+#error "Este sketch está preparado para ESP32 con Arduino IDE."
 #endif
 
 #include <WiFi.h>
@@ -14,10 +14,10 @@
   M1K1U ESP32 master telemetry sketch
 
   Sensores maestros alineados con la plataforma web:
-  - BMP280: temperatura, presion, altitud
+  - BMP280: temperatura, presión, altitud
   - BH1750: luminosidad
-  - MH-RD: lluvia analogica y lluvia digital
-  - Anemometro: velocidad del viento
+  - MH-RD: lluvia analógica y lluvia digital
+  - Anemómetro: velocidad del viento
 
   Librerias requeridas en Arduino IDE:
   - Adafruit BMP280 Library
@@ -62,7 +62,7 @@ namespace Config
   const uint16_t ADC_MAX_VALUE = 4095;
   const float ADC_REFERENCE_VOLTAGE = 3.3f;
 
-  // Ajusta estos valores segun tu anemometro real.
+  // Ajusta estos valores según tu anemómetro real.
   const float ANEMOMETER_MIN_VOLTAGE = 0.054f;
   const float ANEMOMETER_MAX_VOLTAGE = 3.3f;
   const float ANEMOMETER_MAX_SPEED_MPS = 32.4f;
@@ -202,7 +202,7 @@ bool initializeBh1750()
     return true;
   }
 
-  Serial.println(F("[BH1750] No detectado. Revisa conexion I2C."));
+  Serial.println(F("[BH1750] No detectado. Revisa conexión I2C."));
   return false;
 }
 
@@ -219,7 +219,7 @@ void readBmp280(TelemetryPacket &packet)
 
   if (isnan(temperature) || isnan(pressure) || isnan(altitude))
   {
-    Serial.println(F("[BMP280] Lectura invalida. Se omite este ciclo."));
+    Serial.println(F("[BMP280] Lectura inválida. Se omite este ciclo."));
     return;
   }
 
@@ -242,7 +242,7 @@ void readBh1750(TelemetryPacket &packet)
   const float luminosity = lightMeter.readLightLevel();
   if (isnan(luminosity))
   {
-    Serial.println(F("[BH1750] Lectura invalida. Se omite este ciclo."));
+    Serial.println(F("[BH1750] Lectura inválida. Se omite este ciclo."));
     return;
   }
 
@@ -272,7 +272,7 @@ void readWindSensor(TelemetryPacket &packet)
 
   if (isnan(voltage))
   {
-    Serial.println(F("[ANEMOMETRO] Voltaje invalido. Se omite este ciclo."));
+    Serial.println(F("[ANEMÓMETRO] Voltaje inválido. Se omite este ciclo."));
     return;
   }
 
@@ -291,7 +291,7 @@ void readWindSensor(TelemetryPacket &packet)
 void logPacket(const TelemetryPacket &packet)
 {
   printDivider();
-  Serial.print(F("[PACKET] Estacion: "));
+  Serial.print(F("[PACKET] Estación: "));
   Serial.println(packet.stationId);
   delay(1500);
   Serial.print("t0.txt=");
@@ -304,7 +304,7 @@ void logPacket(const TelemetryPacket &packet)
   Serial.write(0xff);
 
   delay(1500);
-  Serial.print(F("  Presion: "));
+  Serial.print(F("  Presión: "));
   Serial.print("t4.txt=");
   Serial.print("\"");
   Serial.println(packet.hasPressure ? String(packet.pressure) + " hPa" : "sin dato");
@@ -334,7 +334,7 @@ void logPacket(const TelemetryPacket &packet)
   Serial.write(0xff);
   
   delay(1500);
-  Serial.print(F("  Lluvia analogica: "));
+  Serial.print(F("  Lluvia analógica: "));
   Serial.println(packet.hasRainAnalog ? String(packet.rainAnalog) + " raw" : "sin dato");
 
   delay(1500);
@@ -387,13 +387,13 @@ bool sendTelemetry(const TelemetryPacket &packet)
 {
   if (!hasAnySensorValue(packet))
   {
-    Serial.println(F("[HTTP] No hay metricas validas para enviar."));
+    Serial.println(F("[HTTP] No hay métricas válidas para enviar."));
     return false;
   }
 
   if (!connectWiFi())
   {
-    Serial.println(F("[HTTP] Envio cancelado por falta de conectividad WiFi."));
+    Serial.println(F("[HTTP] Envío cancelado por falta de conectividad WiFi."));
     return false;
   }
 
@@ -414,7 +414,7 @@ bool sendTelemetry(const TelemetryPacket &packet)
   const String responseBody = http.getString();
   http.end();
 
-  Serial.print(F("[HTTP] Codigo de respuesta: "));
+  Serial.print(F("[HTTP] Código de respuesta: "));
   Serial.println(statusCode);
   if (responseBody.length() > 0)
   {
@@ -477,4 +477,5 @@ void loop()
   logPacket(packet);
   const bool sent = sendTelemetry(packet);
 
-  Serial.println(sent ? F("[CICLO] Telemetria enviada corr
+  Serial.println(sent ? F("[CICLO] Telemetría enviada correctamente.") : F("[CICLO] Falló el envío de telemetría."));
+}

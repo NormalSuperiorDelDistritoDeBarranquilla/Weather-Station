@@ -12,7 +12,7 @@ export function Footer({ compact = false }: FooterProps) {
       <footer className="rounded-[1.8rem] border border-white/10 bg-slate-950/70 px-5 py-4 backdrop-blur-xl">
         <div className="flex flex-col gap-2 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>(c) 2026 M1K1U. Panel interno del sistema.</p>
-          <p>Creditos y autores: pendiente por completar.</p>
+          <p>Créditos y autores: pendiente por completar.</p>
         </div>
       </footer>
     )
@@ -22,11 +22,11 @@ export function Footer({ compact = false }: FooterProps) {
     <footer className="mt-20 border-t border-white/10 bg-slate-950/80 backdrop-blur-2xl">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-200/80">Pie de pagina oficial</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-200/80">Pie de página oficial</p>
           <h2 className="mt-4 font-display text-3xl text-white">M1K1U</h2>
           <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300">
-            Plataforma de monitoreo climatico con persistencia local, telemetria abierta y una base visual lista para
-            evolucionar hacia una solucion profesional.
+            Plataforma de monitoreo climático con persistencia local, telemetría abierta y una base visual lista para
+            evolucionar hacia una solución profesional.
           </p>
           <div className="mt-6 space-y-2 text-sm text-slate-400">
             <p>(c) 2026 M1K1U. Todos los derechos reservados.</p>
@@ -36,7 +36,7 @@ export function Footer({ compact = false }: FooterProps) {
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Navegacion publica</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Navegación pública</p>
           <div className="mt-5 flex flex-col gap-3 text-sm text-slate-300">
             <Link to="/" className="hover:text-cyan-200">
               Inicio
@@ -45,10 +45,10 @@ export function Footer({ compact = false }: FooterProps) {
               Estado en vivo
             </Link>
             <Link to="/ubicacion" className="hover:text-cyan-200">
-              Ubicacion
+              Ubicación
             </Link>
             <Link to="/tecnologias" className="hover:text-cyan-200">
-              Tecnologias
+              Tecnologías
             </Link>
             <Link to="/login" className="hover:text-cyan-200">
               Ingresar al panel
@@ -63,9 +63,9 @@ export function Footer({ compact = false }: FooterProps) {
               Acerca del proyecto
             </Link>
             <a href={apiDocsUrl} target="_blank" rel="noreferrer" className="hover:text-cyan-200">
-              Documentacion API
+              Documentación API
             </a>
-            <span className="text-slate-500">Politica de datos, creditos visuales y bloques legales: pendiente por completar.</span>
+            <span className="text-slate-500">Política de datos, créditos visuales y bloques legales: pendiente por completar.</span>
           </div>
         </div>
       </div>

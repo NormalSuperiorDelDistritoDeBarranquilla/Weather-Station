@@ -115,7 +115,7 @@ class SensorDataCreate(SensorDataBase):
     def validate_at_least_one_metric(self) -> "SensorDataCreate":
         has_numeric_metric = any(getattr(self, metric_key) is not None for metric_key in enabled_metric_keys())
         if not has_numeric_metric and self.rain_digital is None:
-            raise ValueError("Debe enviarse al menos una metrica valida del sensor.")
+            raise ValueError("Debe enviarse al menos una métrica válida del sensor.")
         return self
 
 

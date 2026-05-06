@@ -13,6 +13,7 @@ import {
   publicMetricScenes,
   publicProofPoints,
   publicTechnologies,
+  sitePhotos,
 } from '../data/publicSite'
 import { usePublicLanding } from '../hooks/usePublicLanding'
 import type { MetricKey } from '../types/api'
@@ -42,7 +43,7 @@ export function HomePage() {
       : 'Sin dato'
   const selectedBadgeTone = !isStationOnline ? 'danger' : hasSelectedValue ? 'info' : 'warning'
   const selectedBadgeLabel = !isStationOnline
-    ? 'Esperando telemetria'
+    ? 'Esperando telemetría'
     : hasSelectedValue
       ? selectedState?.status_label ?? 'Disponible'
       : 'Lectura incompleta'
@@ -60,19 +61,19 @@ export function HomePage() {
           <article className="panel hero-sheen relative overflow-hidden p-8 sm:p-10">
             <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-cyan-400/10 to-transparent" />
             <div className="relative">
-              <span className="pill">Portada publica de la estacion</span>
+              <span className="pill">Portada pública de la estación</span>
               <div className="mt-6 flex flex-wrap gap-3">
-                <StatusBadge label={isStationOnline ? 'Transmision activa' : 'Sin conexión'} tone={isStationOnline ? 'success' : 'danger'} />
+                <StatusBadge label={isStationOnline ? 'Transmisión activa' : 'Sin conexión'} tone={isStationOnline ? 'success' : 'danger'} />
                 <StatusBadge label="Panel abierto sin login" tone="info" />
                 <StatusBadge label={location.neighborhood} tone="neutral" />
               </div>
 
               <h1 className="mt-7 max-w-4xl font-display text-5xl leading-tight text-white sm:text-6xl">
-                Telemetria climatica visible desde Barrio La Playa, Barranquilla.
+                Telemetría climática visible desde Barrio La Playa, Barranquilla.
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                M1K1U muestra en una sola capa publica el origen de los datos, el estado actual de la estacion y una
+                M1K1U muestra en una sola capa pública el origen de los datos, el estado actual de la estación y una
                 experiencia visual preparada para comunicar monitoreo ambiental serio, moderno y listo para crecer.
               </p>
 
@@ -80,23 +81,23 @@ export function HomePage() {
                 <div className="apple-float-card rounded-[1.8rem] p-5">
                   <div className="flex items-center gap-3 text-cyan-200">
                     <MapPin className="h-4 w-4" />
-                    <span className="text-xs uppercase tracking-[0.24em]">Ubicacion operativa</span>
+                    <span className="text-xs uppercase tracking-[0.24em]">Ubicación operativa</span>
                   </div>
                   <p className="mt-4 font-display text-2xl text-white">{location.label}</p>
                   <p className="mt-3 text-sm leading-6 text-slate-300">
-                    Punto visible de captura para una lectura urbana-costera con contexto geografico claro.
+                    Punto visible de captura para una lectura urbana-costera con contexto geográfico claro.
                   </p>
                 </div>
 
                 <div className="apple-float-card rounded-[1.8rem] p-5">
                   <div className="flex items-center gap-3 text-emerald-200">
                     <Clock3 className="h-4 w-4" />
-                    <span className="text-xs uppercase tracking-[0.24em]">Ultimo paquete</span>
+                    <span className="text-xs uppercase tracking-[0.24em]">Último paquete</span>
                   </div>
                   <p className="mt-4 font-display text-2xl text-white">{formatDateTime(latest?.last_seen)}</p>
                   <p className="mt-3 text-sm leading-6 text-slate-300">
                     {isStationOnline
-                      ? 'La estacion sigue dentro de la ventana operativa definida para la telemetria.'
+                      ? 'La estación sigue dentro de la ventana operativa definida para la telemetría.'
                       : 'No hay paquete reciente todavía. La portada se actualizará apenas llegue una nueva transmisión.'}
                   </p>
                 </div>
@@ -129,7 +130,7 @@ export function HomePage() {
                 </div>
 
                 <div className="rounded-[1.6rem] border border-white/10 bg-slate-950/40 px-4 py-3 text-right backdrop-blur-xl">
-                  <p className="text-[11px] uppercase tracking-[0.24em] text-slate-300">Lectura publica</p>
+                  <p className="text-[11px] uppercase tracking-[0.24em] text-slate-300">Lectura pública</p>
                   <p className="mt-3 font-display text-3xl text-white">{selectedValueText}</p>
                 </div>
               </div>
@@ -137,7 +138,7 @@ export function HomePage() {
               <div className="rounded-[1.85rem] border border-white/10 bg-slate-950/45 p-5 backdrop-blur-2xl">
                 <div className="flex flex-wrap items-center gap-3">
                   <StatusBadge label={selectedBadgeLabel} tone={selectedBadgeTone} />
-                  <StatusBadge label={latest?.station_id ?? 'Sin estacion'} tone="neutral" />
+                  <StatusBadge label={latest?.station_id ?? 'Sin estación'} tone="neutral" />
                   <StatusBadge label={`${stats?.total_records ?? 0} registros reales en 24h`} tone="neutral" />
                   <StatusBadge label={`Lluvia digital: ${rainDigitalStatus}`} tone={rainDigitalStatus === 'Lluvia' ? 'warning' : 'neutral'} />
                 </div>
@@ -227,7 +228,7 @@ export function HomePage() {
           <article className="panel p-8">
             <div className="flex items-center gap-3 text-violet-200">
               <Database className="h-5 w-5" />
-              <span className="text-xs uppercase tracking-[0.24em]">Tecnologias principales</span>
+              <span className="text-xs uppercase tracking-[0.24em]">Tecnologías principales</span>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               {publicTechnologies.map((item) => (
@@ -255,10 +256,10 @@ export function HomePage() {
 
         <section className="space-y-6">
           <div>
-            <span className="pill">Galeria del despliegue</span>
-            <h3 className="mt-4 font-display text-3xl text-white">Fondos, territorio y atmosfera para comunicar el proyecto</h3>
+            <span className="pill">Galería del despliegue</span>
+            <h3 className="mt-4 font-display text-3xl text-white">Fondos, territorio y atmósfera para comunicar el proyecto</h3>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
-              La capa publica ya funciona como vitrina visual del proyecto: se entiende donde opera la estacion, que
+              La capa pública ya funciona como vitrina visual del proyecto: se entiende dónde opera la estación, qué
               variables monitorea y por qué la plataforma se presenta como una solución tecnológica seria.
             </p>
           </div>
@@ -270,15 +271,15 @@ export function HomePage() {
             className="immersive-photo-card min-h-[22rem] rounded-[2rem] border border-white/10 p-8"
             style={{
               backgroundImage:
-                'linear-gradient(180deg, rgba(2,6,23,0.08) 0%, rgba(2,6,23,0.72) 55%, rgba(2,6,23,0.95) 100%), url(https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=80)',
+                `linear-gradient(180deg, rgba(2,6,23,0.08) 0%, rgba(2,6,23,0.72) 55%, rgba(2,6,23,0.95) 100%), url(${sitePhotos.homeTerritoryHero})`,
             }}
           >
             <div className="max-w-xl">
               <span className="pill border-white/15 bg-slate-950/35 text-cyan-100">Contexto territorial</span>
-              <h3 className="mt-6 font-display text-4xl text-white">La portada publica ya deja claro desde donde nace la telemetria.</h3>
+              <h3 className="mt-6 font-display text-4xl text-white">La portada pública ya deja claro desde dónde nace la telemetría.</h3>
               <p className="mt-5 text-sm leading-7 text-slate-200/90">
-                {location.label} se presenta como referencia abierta del sistema. Esa decision evita una home abstracta
-                y conecta el visor publico con una estacion real ubicada en un entorno urbano y costero.
+                {location.label} se presenta como referencia abierta del sistema. Esa decisión evita una home abstracta
+                y conecta el visor público con una estación real ubicada en un entorno urbano y costero.
               </p>
             </div>
           </article>
@@ -286,7 +287,7 @@ export function HomePage() {
           <article className="panel p-8">
             <div className="flex items-center gap-3 text-emerald-200">
               <Database className="h-5 w-5" />
-              <span className="text-xs uppercase tracking-[0.24em]">Estado del dataset publico</span>
+              <span className="text-xs uppercase tracking-[0.24em]">Estado del dataset público</span>
             </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
@@ -298,7 +299,7 @@ export function HomePage() {
                 <p className="mt-3 font-display text-3xl text-white">{latest?.active_label ?? 'Sin conexión'}</p>
               </div>
               <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Estacion</p>
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Estación</p>
                 <p className="mt-3 font-display text-3xl text-white">{latest?.station_id ?? '---'}</p>
               </div>
               <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">

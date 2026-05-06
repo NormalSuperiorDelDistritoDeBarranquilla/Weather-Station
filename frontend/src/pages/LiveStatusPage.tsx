@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Footer } from '../components/Footer'
 import { PublicHeader } from '../components/PublicHeader'
 import { StatusBadge } from '../components/StatusBadge'
-import { publicLocation } from '../data/publicSite'
+import { publicLocation, sitePhotos } from '../data/publicSite'
 import { usePublicLanding } from '../hooks/usePublicLanding'
 import type { MetricKey } from '../types/api'
 import { formatDateTime, formatMetricValue } from '../utils/format'
@@ -26,25 +26,25 @@ export function LiveStatusPage() {
       <div className="hero-orb left-[-4rem] top-12 h-72 w-72 bg-cyan-400/15" />
       <div className="hero-orb right-[-6rem] top-28 h-80 w-80 bg-emerald-400/10" />
 
-      <PublicHeader subtitle="Visor publico en tiempo real de la estacion meteorologica" />
+      <PublicHeader subtitle="Visor público en tiempo real de la estación meteorológica" />
 
       <main className="page-enter mx-auto flex max-w-7xl flex-col gap-10 px-4 pb-8 pt-8 sm:px-6 lg:px-8">
         <section className="grid gap-8 xl:grid-cols-[1.02fr_0.98fr]">
           <article className="panel hero-sheen relative overflow-hidden p-8 sm:p-10">
-            <span className="pill">Estado de la estacion</span>
+            <span className="pill">Estado de la estación</span>
             <div className="mt-6 flex flex-wrap gap-3">
               <StatusBadge label={isStationOnline ? 'Transmisión activa' : 'Sin conexión'} tone={isStationOnline ? 'success' : 'danger'} />
-              <StatusBadge label={latest?.station_id ?? 'Sin estacion'} tone="neutral" />
-              <StatusBadge label="Actualizacion cada 15 segundos" tone="info" />
+              <StatusBadge label={latest?.station_id ?? 'Sin estación'} tone="neutral" />
+              <StatusBadge label="Actualización cada 15 segundos" tone="info" />
             </div>
 
             <h1 className="mt-7 max-w-4xl font-display text-5xl leading-tight text-white sm:text-6xl">
-              Estado publico, lectura actual y trazabilidad inmediata de la estacion.
+              Estado público, lectura actual y trazabilidad inmediata de la estación.
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
               Este apartado concentra la lectura visible del sistema: último paquete recibido, disponibilidad de cada
-              sensor y actividad operativa general sin necesidad de iniciar sesion.
+              sensor y actividad operativa general sin necesidad de iniciar sesión.
             </p>
 
             <div className="mt-8">
@@ -63,13 +63,13 @@ export function LiveStatusPage() {
             className="immersive-photo-card min-h-[28rem] rounded-[2.2rem] border border-white/10 p-8"
             style={{
               backgroundImage:
-                'linear-gradient(180deg, rgba(2,6,23,0.12) 0%, rgba(2,6,23,0.58) 45%, rgba(2,6,23,0.94) 100%), url(https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1600&q=80)',
+                `linear-gradient(180deg, rgba(2,6,23,0.12) 0%, rgba(2,6,23,0.58) 45%, rgba(2,6,23,0.94) 100%), url(${sitePhotos.liveStatusHero})`,
             }}
           >
             <div className="flex h-full flex-col justify-between">
               <div>
                 <span className="pill border-white/15 bg-slate-950/35 text-cyan-100">Lectura abierta</span>
-                <h2 className="mt-6 max-w-lg font-display text-4xl text-white">Panel pensado para revisar la estacion incluso antes del login.</h2>
+                <h2 className="mt-6 max-w-lg font-display text-4xl text-white">Panel pensado para revisar la estación incluso antes del login.</h2>
                 <p className="mt-4 max-w-lg text-sm leading-7 text-slate-200/90">
                   Si la estación aún no transmite, el visor lo muestra tal cual. Si llega telemetría parcial, cada
                   variable queda marcada como disponible o sin dato.
@@ -179,7 +179,7 @@ export function LiveStatusPage() {
                   <StatusBadge label={rainDigitalStatus} tone={rainDigitalStatus === 'Lluvia' ? 'warning' : 'info'} />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-slate-300">
-                  Este estado llega desde el canal digital del sensor MH-RD y complementa la lectura analogica.
+                  Este estado llega desde el canal digital del sensor MH-RD y complementa la lectura analógica.
                 </p>
               </div>
             </div>
@@ -188,12 +188,12 @@ export function LiveStatusPage() {
           <article className="panel-soft p-8">
             <div className="flex items-center gap-3 text-violet-200">
               <ShieldCheck className="h-5 w-5" />
-              <span className="text-xs uppercase tracking-[0.24em]">Que puede hacer el usuario</span>
+              <span className="text-xs uppercase tracking-[0.24em]">Qué puede hacer el usuario</span>
             </div>
-            <h3 className="mt-6 font-display text-3xl text-white">El visor publico deja entrar a cualquiera, pero el control fino sigue protegido.</h3>
+            <h3 className="mt-6 font-display text-3xl text-white">El visor público deja entrar a cualquiera, pero el control fino sigue protegido.</h3>
             <p className="mt-4 text-sm leading-7 text-slate-300">
               Esta página muestra estado real, última transmisión y disponibilidad por variable. El dashboard interno
-              conserva el analisis historico detallado, alertas y diagnostico individual de sensores.
+              conserva el análisis histórico detallado, alertas y diagnóstico individual de sensores.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link to="/login" className="button-primary">

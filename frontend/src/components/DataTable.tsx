@@ -35,10 +35,10 @@ export function DataTable({ data, page, totalPages, total, onPageChange }: DataT
               <th className="px-6 py-4 font-medium">Fecha y hora</th>
               <th className="px-6 py-4 font-medium">Estación</th>
               <th className="px-6 py-4 font-medium">Temperatura</th>
-              <th className="px-6 py-4 font-medium">Presion</th>
+              <th className="px-6 py-4 font-medium">Presión</th>
               <th className="px-6 py-4 font-medium">Altitud</th>
               <th className="px-6 py-4 font-medium">Luminosidad</th>
-              <th className="px-6 py-4 font-medium">Lluvia analogica</th>
+              <th className="px-6 py-4 font-medium">Lluvia analógica</th>
               <th className="px-6 py-4 font-medium">Lluvia digital</th>
               <th className="px-6 py-4 font-medium">Viento</th>
             </tr>
@@ -71,7 +71,7 @@ export function DataTable({ data, page, totalPages, total, onPageChange }: DataT
 
       <div className="flex flex-col gap-4 border-t border-white/10 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-slate-300">
-          Pagina {page} de {totalPages}
+          Página {page} de {totalPages}
         </p>
         <div className="flex items-center gap-3">
           <button

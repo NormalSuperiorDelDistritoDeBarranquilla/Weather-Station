@@ -40,7 +40,7 @@ export function ConsoleHomePage() {
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
               Esta vista funciona como portada interna del sistema: te ubica, resume el estado de la estación y te
-              lleva rapido al dashboard analitico, graficas, registros historicos y diagnosticos por sensor.
+              lleva rápido al dashboard analítico, gráficas, registros históricos y diagnósticos por sensor.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <StatusBadge label={latest?.active_label ?? 'Sin conexión'} tone={latest?.active ? 'success' : 'danger'} />
@@ -77,7 +77,7 @@ export function ConsoleHomePage() {
           <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
             <div className="flex items-center gap-3 text-violet-200">
               <ShieldCheck className="h-4 w-4" />
-              <span className="text-xs uppercase tracking-[0.24em]">Sesion</span>
+              <span className="text-xs uppercase tracking-[0.24em]">Sesión</span>
             </div>
             <p className="mt-4 font-display text-3xl text-white">Protegida</p>
           </div>
@@ -119,7 +119,7 @@ export function ConsoleHomePage() {
           </div>
           <h2 className="mt-5 font-display text-3xl text-white">Panel de datos</h2>
           <p className="mt-4 text-sm leading-7 text-slate-300">
-            Accede a una vista mas intensa en datos con barras, radar, comparativas y visualizaciones circulares.
+            Accede a una vista más intensa en datos con barras, radar, comparativas y visualizaciones circulares.
           </p>
           <Link to="/overview" className="mt-6 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100">
             Ir al dashboard detallado
@@ -145,12 +145,12 @@ export function ConsoleHomePage() {
             <ChartSpline className="h-4 w-4" />
             <span className="text-xs uppercase tracking-[0.24em]">Graficas</span>
           </div>
-          <h2 className="mt-5 font-display text-3xl text-white">Series historicas</h2>
+          <h2 className="mt-5 font-display text-3xl text-white">Series históricas</h2>
           <p className="mt-4 text-sm leading-7 text-slate-300">
             Observa la evolucion temporal de cada variable y cambia el rango de consulta en segundos.
           </p>
           <Link to="/charts" className="mt-6 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100">
-            Abrir graficas
+            Abrir gráficas
           </Link>
         </article>
       </section>

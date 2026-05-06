@@ -8,6 +8,7 @@ import {
   publicTechnologies,
   publicTechnologyLayers,
   scalingCapabilities,
+  sitePhotos,
   telemetryFlow,
 } from '../data/publicSite'
 
@@ -24,11 +25,11 @@ export function TechnologiesPage() {
           <article className="panel hero-sheen relative overflow-hidden p-8 sm:p-10">
             <span className="pill">Arquitectura del producto</span>
             <h1 className="mt-6 max-w-4xl font-display text-5xl leading-tight text-white sm:text-6xl">
-              Una base tecnica pensada para crecer sin perder orden ni trazabilidad.
+              Una base técnica pensada para crecer sin perder orden ni trazabilidad.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              M1K1U combina frontend, backend, autenticacion, persistencia local y firmware modular para crear una
-              plataforma meteorologica lista para evolucionar hacia un producto mas robusto.
+              M1K1U combina frontend, backend, autenticación, persistencia local y firmware modular para crear una
+              plataforma meteorológica lista para evolucionar hacia un producto más robusto.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -44,16 +45,16 @@ export function TechnologiesPage() {
             className="immersive-photo-card min-h-[28rem] rounded-[2.2rem] border border-white/10 p-8"
             style={{
               backgroundImage:
-                'linear-gradient(180deg, rgba(2,6,23,0.12) 0%, rgba(2,6,23,0.58) 45%, rgba(2,6,23,0.94) 100%), url(https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80)',
+                `linear-gradient(180deg, rgba(2,6,23,0.12) 0%, rgba(2,6,23,0.58) 45%, rgba(2,6,23,0.94) 100%), url(${sitePhotos.technologyHero})`,
             }}
           >
             <div className="flex h-full flex-col justify-between">
               <div>
-                <span className="pill border-white/15 bg-slate-950/35 text-cyan-100">Pipeline tecnico</span>
+                <span className="pill border-white/15 bg-slate-950/35 text-cyan-100">Pipeline técnico</span>
                 <h2 className="mt-6 max-w-lg font-display text-4xl text-white">Desde el sensor hasta la interfaz, todo queda conectado en un solo proyecto.</h2>
                 <p className="mt-4 max-w-lg text-sm leading-7 text-slate-200/90">
                   La arquitectura evita depender de motores externos y deja a SQLite como persistencia embebida central
-                  para datos meteorologicos reales.
+                  para datos meteorológicos reales.
                 </p>
               </div>
 
@@ -96,7 +97,7 @@ export function TechnologiesPage() {
           <article className="panel p-8">
             <div className="flex items-center gap-3 text-cyan-200">
               <RadioTower className="h-5 w-5" />
-              <span className="text-xs uppercase tracking-[0.24em]">Flujo de telemetria</span>
+              <span className="text-xs uppercase tracking-[0.24em]">Flujo de telemetría</span>
             </div>
             <div className="mt-6 grid gap-4">
               {telemetryFlow.map((step) => (
@@ -130,7 +131,7 @@ export function TechnologiesPage() {
             </div>
 
             <div className="mt-8">
-              <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Capacidades de expansion</p>
+              <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Capacidades de expansión</p>
               <div className="mt-4 flex flex-wrap gap-3">
                 {scalingCapabilities.map((item) => (
                   <span key={item} className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-100">
@@ -146,16 +147,16 @@ export function TechnologiesPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <span className="pill">Acceso administrativo</span>
-              <h3 className="mt-4 font-display text-4xl text-white">Cuando necesites control completo, el panel interno sigue un paso mas adelante.</h3>
+              <h3 className="mt-4 font-display text-4xl text-white">Cuando necesites control completo, el panel interno sigue un paso más adelante.</h3>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
-                El sitio publico comunica el proyecto. El dashboard protegido concentra historicos, alertas, analitica
-                y diagnostico individual por sensor.
+                El sitio público comunica el proyecto. El dashboard protegido concentra históricos, alertas, analítica
+                y diagnóstico individual por sensor.
               </p>
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link to="/estado-en-vivo" className="button-secondary">
-                Volver al visor publico
+                Volver al visor público
               </Link>
               <Link to="/login" className="button-primary">
                 Ingresar al panel

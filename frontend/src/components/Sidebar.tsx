@@ -9,7 +9,7 @@ import { formatDateTime } from '../utils/format'
 const links = [
   { to: '/dashboard', label: 'Inicio', icon: Home },
   { to: '/overview', label: 'Dashboard', icon: Gauge },
-  { to: '/charts', label: 'Graficas', icon: LineChart },
+  { to: '/charts', label: 'Gráficas', icon: LineChart },
   { to: '/history', label: 'Historial', icon: History },
   { to: '/project-about', label: 'Acerca', icon: Info },
 ]
@@ -69,7 +69,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               type="button"
               className="rounded-2xl border border-white/10 p-2 text-slate-300 lg:hidden"
               onClick={onClose}
-              aria-label="Cerrar menu lateral"
+              aria-label="Cerrar menú lateral"
             >
               <X className="h-5 w-5" />
             </button>
@@ -118,7 +118,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 {latest?.station_id ?? 'Sin estación'}
               </span>
               <span className="rounded-full border border-white/10 bg-slate-950/45 px-3 py-1 text-xs text-slate-200">
-                {latest?.active_label ?? 'Esperando telemetria'}
+                {latest?.active_label ?? 'Esperando telemetría'}
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/45 px-3 py-1 text-xs text-slate-200">
                 <AlertTriangle className="h-3.5 w-3.5 text-amber-300" />

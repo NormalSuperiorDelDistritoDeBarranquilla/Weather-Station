@@ -31,7 +31,7 @@ export const metricUI: Record<MetricKey, MetricUIConfig> = {
   },
   pressure: {
     key: 'pressure',
-    label: 'Presion',
+    label: 'Presión',
     unit: 'hPa',
     accent: 'from-violet-300/20 to-fuchsia-500/10',
     chartStroke: '#a855f7',
@@ -55,7 +55,7 @@ export const metricUI: Record<MetricKey, MetricUIConfig> = {
   },
   rain_analog: {
     key: 'rain_analog',
-    label: 'Lluvia analogica',
+    label: 'Lluvia analógica',
     unit: 'raw',
     accent: 'from-sky-300/20 to-cyan-500/10',
     chartStroke: '#22d3ee',
@@ -79,7 +79,7 @@ export const dashboardHighlights = [
   },
   {
     icon: Gauge,
-    label: 'Telemetria maestra',
+    label: 'Telemetría maestra',
     description: 'La interfaz toma como referencia directa el set de sensores del Arduino maestro.',
   },
 ]

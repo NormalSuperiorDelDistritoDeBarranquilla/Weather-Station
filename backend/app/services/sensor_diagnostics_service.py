@@ -150,7 +150,7 @@ def resolve_connection_state(
         return "offline", "Sin conexión"
     if latest_value is None:
         return "online", "Reporte incompleto"
-    return "online", "En linea"
+        return "online", "En línea"
 
 
 def build_series(records_desc: list[SensorData], metric_key: str) -> list[SensorDetailPoint]:
@@ -201,7 +201,7 @@ def build_sensor_issues(
             SensorIssue(
                 code="awaiting-first-packet",
                 severity="critical",
-                title="Sin telemetria inicial",
+                title="Sin telemetría inicial",
                 message=f"Aún no ha llegado ningún paquete para {label.lower()}. La plataforma está esperando el primer envío desde Arduino o ESP32.",
                 detected_at=None,
             ),
@@ -235,8 +235,8 @@ def build_sensor_issues(
             SensorIssue(
                 code="never-reported",
                 severity="critical",
-                title="Sensor sin lecturas validas",
-                message=f"No existe ninguna lectura valida almacenada para {label.lower()}.",
+                title="Sensor sin lecturas válidas",
+                message=f"No existe ninguna lectura válida almacenada para {label.lower()}.",
                 detected_at=snapshot.last_packet_at,
             ),
         )
@@ -247,7 +247,7 @@ def build_sensor_issues(
                 SensorIssue(
                     code="stale-valid-reading",
                     severity="warning",
-                    title="Lectura valida desactualizada",
+                    title="Lectura válida desactualizada",
                     message=f"La estación sigue reportando, pero {label.lower()} no entrega un valor válido desde hace {round(minutes_since_valid, 1)} minutos.",
                     detected_at=snapshot.last_valid_at,
                 ),
@@ -260,7 +260,7 @@ def build_sensor_issues(
                 SensorIssue(
                     code="high-loss-rate",
                     severity="warning",
-                    title="Perdida alta de datos",
+                    title="Pérdida alta de datos",
                     message=f"En el rango analizado falta {round(missing_ratio * 100, 1)}% de las lecturas de {label.lower()}.",
                     detected_at=snapshot.last_packet_at,
                 ),

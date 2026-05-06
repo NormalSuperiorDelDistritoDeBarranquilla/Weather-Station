@@ -160,11 +160,11 @@ export function DashboardPage() {
           <div className="relative">
             <span className="pill">Dashboard de datos</span>
             <h1 className="mt-6 font-display text-4xl text-white sm:text-5xl">
-              Inicio analitico para lecturas, patrones y comparativas.
+              Inicio analítico para lecturas, patrones y comparativas.
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
               Esta pantalla es el corazón de datos del sistema: combina estado operativo, métricas recientes y varios
-              tipos de graficas para interpretar la actividad de la estacion sin salir del panel principal.
+              tipos de gráficas para interpretar la actividad de la estación sin salir del panel principal.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <StatusBadge
@@ -255,7 +255,7 @@ export function DashboardPage() {
           </div>
           <p className="mt-4 font-display text-4xl text-white">{rainDigitalStatus}</p>
           <p className="mt-3 text-sm text-slate-300">
-            Este dato viene directamente del pin digital del sensor MH-RD y se muestra fuera de las graficas porque es un estado discreto, no una serie numerica.
+            Este dato viene directamente del pin digital del sensor MH-RD y se muestra fuera de las gráficas porque es un estado discreto, no una serie numérica.
           </p>
         </article>
 
@@ -265,7 +265,7 @@ export function DashboardPage() {
             <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
               <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Sensores sincronizados</p>
               <p className="mt-3 font-display text-3xl text-white">{metricKeys.length + 1}</p>
-              <p className="mt-2 text-sm text-slate-300">Incluye la senal digital de lluvia como dato operativo visible.</p>
+              <p className="mt-2 text-sm text-slate-300">Incluye la señal digital de lluvia como dato operativo visible.</p>
             </div>
             <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
               <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Origen de contrato</p>
@@ -405,7 +405,7 @@ export function DashboardPage() {
                 </div>
                 <p className="mt-3 text-sm text-slate-300">{formatDateTime(latest?.last_seen)}</p>
                 <p className="mt-2 text-sm text-slate-400">
-                  Estado de estacion: {latest?.active ? 'activa y reportando' : 'sin reporte reciente'}.
+                  Estado de estación: {latest?.active ? 'activa y reportando' : 'sin reporte reciente'}.
                 </p>
               </div>
 

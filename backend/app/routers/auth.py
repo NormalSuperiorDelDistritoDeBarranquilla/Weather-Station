@@ -27,7 +27,7 @@ def login(
     if user is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Credenciales invalidas.",
+            detail="Credenciales inválidas.",
         )
 
     token = create_access_token(subject=user.username, role=user.role)
@@ -41,7 +41,7 @@ def login(
 @router.post("/logout", response_model=MessageResponse)
 def logout(response: Response) -> MessageResponse:
     clear_session_cookie(response)
-    return MessageResponse(message="Sesion cerrada correctamente.")
+    return MessageResponse(message="Sesión cerrada correctamente.")
 
 
 @router.get("/me", response_model=MeResponse)

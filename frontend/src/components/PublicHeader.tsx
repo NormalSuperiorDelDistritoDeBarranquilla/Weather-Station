@@ -4,8 +4,8 @@ import { Link, NavLink } from 'react-router-dom'
 const publicLinks = [
   { to: '/', label: 'Inicio', end: true },
   { to: '/estado-en-vivo', label: 'Estado en vivo' },
-  { to: '/ubicacion', label: 'Ubicacion' },
-  { to: '/tecnologias', label: 'Tecnologias' },
+  { to: '/ubicacion', label: 'Ubicación' },
+  { to: '/tecnologias', label: 'Tecnologías' },
 ]
 
 interface PublicHeaderProps {
@@ -17,7 +17,7 @@ interface PublicHeaderProps {
 
 export function PublicHeader({
   title = 'M1K1U',
-  subtitle = 'Centro costero de monitoreo meteorologico',
+  subtitle = 'Centro costero de monitoreo meteorológico',
   ctaLabel = 'Ingresar al panel',
   ctaTo = '/login',
 }: PublicHeaderProps) {
@@ -30,7 +30,7 @@ export function PublicHeader({
               <RadioTower className="h-6 w-6" />
             </div>
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-200/80">Plataforma IoT meteorologica</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-200/80">Plataforma IoT meteorológica</p>
               <h1 className="truncate font-display text-3xl text-white sm:text-[2.2rem]">{title}</h1>
               <p className="truncate text-sm text-slate-300 sm:text-[0.95rem]">{subtitle}</p>
             </div>

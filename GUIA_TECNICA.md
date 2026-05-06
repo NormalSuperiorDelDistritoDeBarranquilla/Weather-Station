@@ -1,8 +1,8 @@
-# GUIA TECNICA M1K1U
+# Guía técnica M1K1U
 
-## 1. Que es este proyecto
+## 1. Qué es este proyecto
 
-M1K1U es una plataforma web IoT para una estacion meteorologica.
+M1K1U es una plataforma web IoT para una estación meteorológica.
 
 Su objetivo es:
 
@@ -10,7 +10,7 @@ Su objetivo es:
 - guardar esos datos localmente en SQLite
 - mostrar esos datos en una interfaz web moderna
 - proteger el panel administrativo con login
-- mantener una capa publica para visualizar el estado de la estacion sin iniciar sesion
+- mantener una capa pública para visualizar el estado de la estación sin iniciar sesión
 
 No depende de MySQL ni PostgreSQL.
 La base de datos esta embebida dentro del proyecto.
@@ -23,7 +23,7 @@ Eso significa que:
 
 - los sensores definidos en el sketch son los que la web muestra
 - el backend valida ese mismo set de campos
-- cualquier metrica fuera de ese contrato no debe aparecer en la UI actual
+- cualquier métrica fuera de ese contrato no debe aparecer en la UI actual
 
 ### Sensores actuales del ESP32
 
@@ -35,12 +35,12 @@ Eso significa que:
 - `rain_digital`
 - `wind_speed`
 
-### Sensores fisicos usados por el sketch
+### Sensores físicos usados por el sketch
 
-- BMP280: temperatura, presion y altitud
+- BMP280: temperatura, presión y altitud
 - BH1750: luminosidad
-- MH-RD: lluvia analogica y lluvia digital
-- anemometro: velocidad del viento
+- MH-RD: lluvia analógica y lluvia digital
+- anemómetro: velocidad del viento
 
 ## 3. Stack real del proyecto
 
@@ -51,7 +51,7 @@ Eso significa que:
 - Alembic
 - SQLite
 - PyJWT
-- pwdlib con Argon2 para hash de contrasenas
+- pwdlib con Argon2 para hash de contraseñas
 
 ### Frontend
 
@@ -67,7 +67,7 @@ Eso significa que:
 ### Firmware / hardware
 
 - ESP32 con Arduino IDE
-- envio de datos por WiFi usando HTTP POST
+- envío de datos por WiFi usando HTTP POST
 - payload JSON
 
 ## 4. Estructura general
@@ -113,17 +113,17 @@ README.md
 GUIA_TECNICA.md
 ```
 
-## 5. Como funciona el sistema
+## 5. Cómo funciona el sistema
 
 El flujo completo es este:
 
 1. El ESP32 lee los sensores del sketch maestro.
-2. El dispositivo arma un JSON solo con las metricas disponibles.
+2. El dispositivo arma un JSON solo con las métricas disponibles.
 3. El dispositivo hace un `POST /api/sensor-data` al backend.
 4. FastAPI valida la API key y el payload.
 5. El backend normaliza el timestamp y guarda la lectura en SQLite.
 6. El frontend consulta la API por polling cada 15 segundos.
-7. La landing publica y el panel privado muestran el estado actual y el historial real.
+7. La landing pública y el panel privado muestran el estado actual y el historial real.
 
 ## 6. Arquitectura del backend
 
@@ -158,7 +158,7 @@ Variables importantes:
 
 Defaults reales:
 
-- cookie de sesion: `m1k1u_session`
+- cookie de sesión: `m1k1u_session`
 - zona horaria local: `America/Bogota`
 - base de datos: `backend/data/m1k1u.db`
 
@@ -173,7 +173,7 @@ Puntos importantes:
 - usa SQLAlchemy
 - crea `engine` sobre SQLite
 - usa una clase `UtcDateTime` para guardar fechas en UTC
-- toda sesion DB sale de `SessionLocal`
+- toda sesión DB sale de `SessionLocal`
 
 ### 6.4 Modelo `users`
 
@@ -203,7 +203,7 @@ Tabla `sensor_data`:
 
 Notas:
 
-- existen columnas historicas heredadas de iteraciones previas, pero la logica actual solo usa el contrato maestro del ESP32
+- existen columnas históricas heredadas de iteraciones previas, pero la lógica actual solo usa el contrato maestro del ESP32
 - `rain_digital` es un estado discreto y no una serie numerica
 
 Indices principales:
@@ -224,7 +224,7 @@ Migraciones relevantes:
 - `20260404_0003_add_rain_altitude_metrics.py`
 - `20260407_0004_add_arduino_master_metrics.py`
 
-Estas migraciones se aplican automaticamente al arrancar el backend.
+Estas migraciones se aplican automáticamente al arrancar el backend.
 
 ### 6.7 Seed inicial
 
@@ -235,12 +235,12 @@ Archivo de seed:
 Que hace:
 
 - si no existe el usuario `admin`, lo crea
-- la contrasena se guarda hasheada
+- la contraseña se guarda hasheada
 
 Credenciales iniciales:
 
 - usuario: `admin`
-- contrasena: `admin123`
+- contraseña: `admin123`
 
 ### 6.8 Seguridad
 
@@ -250,20 +250,20 @@ Archivo de seguridad:
 
 Implementa:
 
-- hash de contrasenas
-- verificacion de contrasenas
+- hash de contraseñas
+- verificación de contraseñas
 - JWT con algoritmo `HS256`
 - expiracion del token
 
-Archivo de servicio de autenticacion:
+Archivo de servicio de autenticación:
 
 - `auth_service.py`
 
 Implementa:
 
-- autenticacion de usuario
+- autenticación de usuario
 - lectura de cookie `HttpOnly`
-- cierre de sesion
+- cierre de sesión
 - carga del usuario actual
 
 ## 7. Routers del backend
@@ -286,7 +286,7 @@ Notas:
 
 - `POST /api/sensor-data` usa `X-API-Key`
 - `latest`, `history` y `stats` requieren login
-- `public/landing` es publico
+- `public/landing` es público
 
 ### 7.3 Alertas
 
@@ -360,7 +360,7 @@ Archivo principal de rutas:
 
 - `App.tsx`
 
-Rutas publicas:
+Rutas públicas:
 
 - `/`
 - `/estado-en-vivo`
@@ -457,7 +457,7 @@ Si quieres iniciar todo sin escribir comandos manuales, usa:
 Funcion:
 
 - `iniciar_m1k1u.bat` levanta backend y frontend en segundo plano
-- crea `.env` automaticamente si faltan
+- crea `.env` automáticamente si faltan
 - guarda PIDs en la carpeta `.runtime`
 - abre la aplicacion en el navegador
 
@@ -499,7 +499,7 @@ Frontend:
 
 - `http://127.0.0.1:5173`
 
-### 10.3 Arranque rapido si ya instalaste dependencias
+### 10.3 Arranque rápido si ya instalaste dependencias
 
 Terminal 1:
 
@@ -561,30 +561,30 @@ VITE_API_URL=http://127.0.0.1:8000/api
 
 No tienes que crear la base manualmente.
 
-## 13. Login y sesion
+## 13. Login y sesión
 
 Credenciales iniciales:
 
 - usuario: `admin`
-- contrasena: `admin123`
+- contraseña: `admin123`
 
 Flujo:
 
 1. El frontend hace `POST /api/auth/login`.
-2. El backend valida usuario y password.
+2. El backend valida usuario y contraseña.
 3. Si es correcto, genera JWT.
 4. El JWT se guarda en cookie `HttpOnly`.
-5. El frontend consulta `/api/auth/me` para validar la sesion.
+5. El frontend consulta `/api/auth/me` para validar la sesión.
 
-## 14. Landing publica vs panel privado
+## 14. Landing pública vs panel privado
 
-### Landing publica
+### Landing pública
 
 Sirve para:
 
-- mostrar la ubicacion de la estacion
-- mostrar si la estacion esta activa o no
-- mostrar la ultima lectura publica
+- mostrar la ubicación de la estación
+- mostrar si la estación está activa o no
+- mostrar la última lectura pública
 - mostrar parte del estado del proyecto sin login
 
 Endpoint clave:
@@ -596,10 +596,10 @@ Endpoint clave:
 Sirve para:
 
 - dashboard completo
-- graficas historicas
+- gráficas históricas
 - tabla de historial
 - alertas
-- diagnostico individual por sensor
+- diagnóstico individual por sensor
 
 Necesita login.
 
@@ -609,7 +609,7 @@ La plataforma maneja estos escenarios:
 
 - `Sin conexión`: no llegan paquetes recientes
 - `Sin dato`: llego un paquete, pero ese sensor no vino en el payload
-- `Activa`: la estacion envio datos dentro de la ventana operativa
+- `Activa`: la estación envió datos dentro de la ventana operativa
 
 La ventana operativa depende de:
 
@@ -625,14 +625,14 @@ El proyecto calcula alertas tecnicas reales sobre el set maestro del ESP32.
 
 Entre ellas:
 
-- estacion sin reporte reciente
+- estación sin reporte reciente
 - temperatura alta o extrema
 - riesgo de congelacion o helada
-- descenso brusco de presion
+- descenso brusco de presión
 - viento fuerte o extremo
 - lluvia detectada por canal digital
 - sensor de lluvia analogico en rango saturado
-- perdida de paquetes, campo faltante o flatline por sensor
+- pérdida de paquetes, campo faltante o flatline por sensor
 
 Endpoint:
 
@@ -656,7 +656,7 @@ Endpoint:
 
 - `GET /api/sensors/{metric_key}/detail`
 
-Metricas validas hoy:
+Métricas válidas hoy:
 
 - `temperature`
 - `pressure`
@@ -667,7 +667,7 @@ Metricas validas hoy:
 
 Nota:
 
-- `rain_digital` se muestra como estado operativo en paneles y alertas, no como grafica numerica individual
+- `rain_digital` se muestra como estado operativo en paneles y alertas, no como gráfica numérica individual
 
 ## 18. Firmware actual del ESP32
 
@@ -683,9 +683,9 @@ Puntos clave del sketch actual:
 - usa `ArduinoJson`
 - usa `Adafruit_BMP280`
 - usa `BH1750`
-- lee BMP280, BH1750, MH-RD y anemometro
+- lee BMP280, BH1750, MH-RD y anemómetro
 - arma un `TelemetryPacket`
-- envia solo metricas validas
+- envía solo métricas válidas
 
 ### Configuracion que debes cambiar en el sketch
 
@@ -757,7 +757,7 @@ python -m pip install -r requirements.txt
 
 ## 20. Troubleshooting
 
-### Problema: no deja iniciar sesion
+### Problema: no deja iniciar sesión
 
 Revisa:
 
@@ -781,7 +781,7 @@ Revisa:
 Eso significa:
 
 - que no han llegado datos recientes
-- o que la estacion no reporta dentro de la ventana operativa
+- o que la estación no reporta dentro de la ventana operativa
 
 ### Problema: un sensor sale "Sin dato"
 
@@ -805,7 +805,7 @@ Revisa:
 ### Login inicial
 
 - usuario: `admin`
-- contrasena: `admin123`
+- contraseña: `admin123`
 
 ### URLs locales
 
@@ -815,27 +815,27 @@ Revisa:
 
 ## 22. Forma simple de explicar el proyecto
 
-1. Es una plataforma IoT meteorologica full stack.
+1. Es una plataforma IoT meteorológica full stack.
 2. El ESP32 envia datos por HTTP al backend.
-3. El backend valida y guarda la informacion en SQLite.
-4. El frontend consume esos datos y los convierte en dashboard, historial, graficas y alertas.
-5. El sistema tiene una capa publica y otra privada.
+3. El backend valida y guarda la información en SQLite.
+4. El frontend consume esos datos y los convierte en dashboard, historial, gráficas y alertas.
+5. El sistema tiene una capa pública y otra privada.
 6. El archivo `arduino.ino` define exactamente los sensores que la plataforma muestra.
 
 ## 23. Resumen tecnico ejecutivo
 
-M1K1U ya no es solo una pagina.
+M1K1U ya no es solo una página.
 Es una base funcional de producto con:
 
 - frontend moderno
 - backend robusto
 - persistencia local
-- autenticacion real
+- autenticación real
 - ingestion REST para sensores
-- vistas publicas
+- vistas públicas
 - panel privado
 - alertas
-- diagnostico por sensor
+- diagnóstico por sensor
 - compatibilidad con ESP32
 
 Con esta guia deberia ser posible:
