@@ -477,5 +477,4 @@ void loop()
   logPacket(packet);
   const bool sent = sendTelemetry(packet);
 
-  Serial.println(sent ? F("[CICLO] Telemetría enviada correctamente.") : F("[CICLO] Falló el envío de telemetría."));
-}
+  Serial.println(sent ? F("[CICLO] Telemetría enviada correctamente.") : F("[CICLO] Falló el envío de telemetr

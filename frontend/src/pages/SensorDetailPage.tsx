@@ -97,7 +97,7 @@ export function SensorDetailPage() {
                 label={detail?.current_packet_has_value ? detail.latest_status_label : 'Sin dato'}
                 tone={detail?.current_packet_has_value ? 'info' : 'warning'}
               />
-              <StatusBadge label={`Estacion ${detail?.station_id ?? '--'}`} tone="neutral" />
+              <StatusBadge label={`Estación ${detail?.station_id ?? '--'}`} tone="neutral" />
             </div>
           </div>
         </article>
@@ -260,7 +260,7 @@ export function SensorDetailPage() {
         <article className="panel p-6">
           <div className="flex items-center gap-3 text-amber-200">
             <AlertTriangle className="h-4 w-4" />
-            <span className="text-xs uppercase tracking-[0.24em]">Diagnostico operativo</span>
+            <span className="text-xs uppercase tracking-[0.24em]">Diagnóstico operativo</span>
           </div>
           <div className="mt-6 space-y-4">
             {(detail?.issues.length ?? 0) > 0 ? (

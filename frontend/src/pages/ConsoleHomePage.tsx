@@ -143,11 +143,11 @@ export function ConsoleHomePage() {
         <article className="panel-soft p-6">
           <div className="flex items-center gap-3 text-violet-200">
             <ChartSpline className="h-4 w-4" />
-            <span className="text-xs uppercase tracking-[0.24em]">Graficas</span>
+            <span className="text-xs uppercase tracking-[0.24em]">Gráficas</span>
           </div>
           <h2 className="mt-5 font-display text-3xl text-white">Series históricas</h2>
           <p className="mt-4 text-sm leading-7 text-slate-300">
-            Observa la evolucion temporal de cada variable y cambia el rango de consulta en segundos.
+            Observa la evolución temporal de cada variable y cambia el rango de consulta en segundos.
           </p>
           <Link to="/charts" className="mt-6 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100">
             Abrir gráficas

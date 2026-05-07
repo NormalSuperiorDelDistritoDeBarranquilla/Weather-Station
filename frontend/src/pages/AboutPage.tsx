@@ -18,13 +18,13 @@ const sections = [
   },
   {
     icon: Lock,
-    title: 'Seguridad basica real',
+    title: 'Seguridad básica real',
     content:
       'El acceso administrativo utiliza JWT en cookie HttpOnly, contraseñas hasheadas y validación de payloads. La ingestión de sensores se protege con API Key.',
   },
   {
     icon: Network,
-    title: 'Integracion con sensores',
+    title: 'Integración con sensores',
     content:
       'Arduino, ESP32 o un microcontrolador puente pueden enviar datos vía HTTP POST al endpoint REST definido para recibir telemetría climática.',
   },

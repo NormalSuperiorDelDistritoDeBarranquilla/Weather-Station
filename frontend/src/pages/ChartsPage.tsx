@@ -47,9 +47,9 @@ export function ChartsPage() {
         <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
           <div>
             <span className="pill">Analítica histórica</span>
-            <h1 className="mt-6 font-display text-4xl text-white">Graficas de comportamiento temporal</h1>
+            <h1 className="mt-6 font-display text-4xl text-white">Gráficas de comportamiento temporal</h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
-              Revisa la evolucion de cada variable, compara periodos y detecta cambios de tendencia o calidad de
+              Revisa la evolución de cada variable, compara periodos y detecta cambios de tendencia o calidad de
               captura en el tiempo.
             </p>
           </div>

@@ -171,7 +171,7 @@ export function DashboardPage() {
                 label={latest?.active_label ?? 'Sin conexión'}
                 tone={latest?.active ? 'success' : 'danger'}
               />
-              <StatusBadge label={`Estacion ${latest?.station_id ?? '--'}`} tone="info" />
+              <StatusBadge label={`Estación ${latest?.station_id ?? '--'}`} tone="info" />
               <StatusBadge label={`${stats?.total_records ?? 0} muestras en 24h`} tone="neutral" />
               <StatusBadge label={`Lluvia digital: ${rainDigitalStatus}`} tone={rainDigitalStatus === 'Lluvia' ? 'warning' : 'neutral'} />
             </div>
@@ -181,7 +181,7 @@ export function DashboardPage() {
         <article className="panel-soft overflow-hidden p-6">
           <div className="mb-4 flex items-center gap-3 text-violet-200">
             <Orbit className="h-4 w-4" />
-            <span className="text-xs uppercase tracking-[0.24em]">Visualizacion circular</span>
+            <span className="text-xs uppercase tracking-[0.24em]">Visualización circular</span>
           </div>
           <div className="relative h-72">
             <ResponsiveContainer width="100%" height="100%">
@@ -275,7 +275,7 @@ export function DashboardPage() {
             <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
               <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Último paquete</p>
               <p className="mt-3 font-display text-3xl text-white">{formatDateTime(latest?.last_seen)}</p>
-              <p className="mt-2 text-sm text-slate-300">Cada sincronizacion refleja exactamente el set de datos del microcontrolador.</p>
+              <p className="mt-2 text-sm text-slate-300">Cada sincronización refleja exactamente el set de datos del microcontrolador.</p>
             </div>
           </div>
         </article>
