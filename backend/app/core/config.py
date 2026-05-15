@@ -41,21 +41,33 @@ class Settings(BaseSettings):
         if self.database_url_env:
             url = self.database_url_env.strip()
             # If the URL already specifies a driver, return it unchanged.
-            if "+psycopg" in url or "+psycopg2" in url:
+            if "+psycopg" in url or "+psycopg2" in url or "+pg8000" in url:
                 return url
 
-            # Prefer psycopg3 only if the `psycopg` package is available in the environment.
-            # Otherwise leave the URL unchanged so SQLAlchemy will use psycopg2 (if installed).
+            # Try available DB drivers in order of preference.
+            driver = None
             try:
                 import psycopg  # type: ignore
 
-                if url.startswith("postgresql://"):
-                    url = url.replace("postgresql://", "postgresql+psycopg://", 1)
-                elif url.startswith("postgres://"):
-                    url = url.replace("postgres://", "postgresql+psycopg://", 1)
+                driver = "psycopg"
             except Exception:
-                # psycopg (psycopg3) not installed; do not force driver change.
-                pass
+                try:
+                    import psycopg2  # type: ignore
+
+                    driver = "psycopg2"
+                except Exception:
+                    try:
+                        import pg8000  # type: ignore
+
+                        driver = "pg8000"
+                    except Exception:
+                        driver = None
+
+            if driver:
+                if url.startswith("postgresql://"):
+                    url = url.replace("postgresql://", f"postgresql+{driver}://", 1)
+                elif url.startswith("postgres://"):
+                    url = url.replace("postgres://", f"postgresql+{driver}://", 1)
 
             return url
         self.database_path.parent.mkdir(parents=True, exist_ok=True)
