@@ -40,13 +40,23 @@ class Settings(BaseSettings):
     def database_url(self) -> str:
         if self.database_url_env:
             url = self.database_url_env.strip()
-            # If a plain Postgres URL was provided (postgres:// or postgresql://)
-            # and no explicit driver is present, prefer the modern psycopg (psycopg3) driver.
-            if "+psycopg" not in url:
+            # If the URL already specifies a driver, return it unchanged.
+            if "+psycopg" in url or "+psycopg2" in url:
+                return url
+
+            # Prefer psycopg3 only if the `psycopg` package is available in the environment.
+            # Otherwise leave the URL unchanged so SQLAlchemy will use psycopg2 (if installed).
+            try:
+                import psycopg  # type: ignore
+
                 if url.startswith("postgresql://"):
                     url = url.replace("postgresql://", "postgresql+psycopg://", 1)
                 elif url.startswith("postgres://"):
                     url = url.replace("postgres://", "postgresql+psycopg://", 1)
+            except Exception:
+                # psycopg (psycopg3) not installed; do not force driver change.
+                pass
+
             return url
         self.database_path.parent.mkdir(parents=True, exist_ok=True)
         return f"sqlite:///{self.database_path.as_posix()}"
