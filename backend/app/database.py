@@ -43,10 +43,11 @@ class Base(DeclarativeBase):
     """Base class for all ORM models."""
 
 
-engine = create_engine(
-    settings.database_url,
-    connect_args={"check_same_thread": False},
-)
+engine_kwargs: dict[str, object] = {}
+if settings.database_url.startswith("sqlite"):
+    engine_kwargs["connect_args"] = {"check_same_thread": False}
+
+engine = create_engine(settings.database_url, **engine_kwargs)
 
 SessionLocal = sessionmaker(
     autocommit=False,

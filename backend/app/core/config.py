@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from functools import cached_property
 from pathlib import Path
+from importlib import import_module
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -36,38 +37,54 @@ class Settings(BaseSettings):
     def database_path(self) -> Path:
         return (BASE_DIR / "data" / "m1k1u.db").resolve()
 
+    @cached_property
+    def postgres_driver(self) -> str | None:
+        # Prefer the pure-Python driver first so cloud builds do not depend on binary wheels.
+        candidates = (
+            ("pg8000", "pg8000"),
+            ("psycopg", "psycopg"),
+            ("psycopg2", "psycopg2"),
+        )
+        for driver, module_name in candidates:
+            try:
+                import_module(module_name)
+                return driver
+            except Exception:
+                continue
+        return None
+
+    def _driver_available(self, driver: str) -> bool:
+        module_names = {
+            "pg8000": "pg8000",
+            "psycopg": "psycopg",
+            "psycopg2": "psycopg2",
+        }
+        module_name = module_names.get(driver)
+        if module_name is None:
+            return False
+
+        try:
+            import_module(module_name)
+            return True
+        except Exception:
+            return False
+
     @property
     def database_url(self) -> str:
         if self.database_url_env:
             url = self.database_url_env.strip()
-            # If the URL already specifies a driver, return it unchanged.
-            if "+psycopg" in url or "+psycopg2" in url or "+pg8000" in url:
-                return url
+            if url.startswith("postgres://"):
+                url = url.replace("postgres://", "postgresql://", 1)
 
-            # Try available DB drivers in order of preference.
-            driver = None
-            try:
-                import psycopg  # type: ignore
+            driver = self.postgres_driver
+            if url.startswith("postgresql+"):
+                configured_driver = url.split("://", 1)[0].split("+", 1)[1]
+                if self._driver_available(configured_driver) or driver is None:
+                    return url
+                return f"postgresql+{driver}://{url.split('://', 1)[1]}"
 
-                driver = "psycopg"
-            except Exception:
-                try:
-                    import psycopg2  # type: ignore
-
-                    driver = "psycopg2"
-                except Exception:
-                    try:
-                        import pg8000  # type: ignore
-
-                        driver = "pg8000"
-                    except Exception:
-                        driver = None
-
-            if driver:
-                if url.startswith("postgresql://"):
-                    url = url.replace("postgresql://", f"postgresql+{driver}://", 1)
-                elif url.startswith("postgres://"):
-                    url = url.replace("postgres://", f"postgresql+{driver}://", 1)
+            if driver and url.startswith("postgresql://"):
+                return url.replace("postgresql://", f"postgresql+{driver}://", 1)
 
             return url
         self.database_path.parent.mkdir(parents=True, exist_ok=True)
