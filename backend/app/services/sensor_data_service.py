@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from datetime import date, datetime, time, timedelta, timezone
+import logging
 from math import ceil
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from sqlalchemy import Select, func, select
 from sqlalchemy.orm import Session
@@ -24,7 +25,21 @@ from app.schemas.sensor_data import (
 )
 
 
-LOCAL_TIMEZONE = ZoneInfo(settings.local_timezone)
+logger = logging.getLogger(__name__)
+
+
+def resolve_local_timezone() -> timezone | ZoneInfo:
+    try:
+        return ZoneInfo(settings.local_timezone)
+    except ZoneInfoNotFoundError:
+        logger.warning(
+            "Timezone %s is unavailable in this runtime. Falling back to UTC.",
+            settings.local_timezone,
+        )
+        return timezone.utc
+
+
+LOCAL_TIMEZONE = resolve_local_timezone()
 PUBLIC_LOCATION = PublicStationLocation(
     label="Barrio La Playa, Barranquilla, Atlantico, Colombia",
     neighborhood="Barrio La Playa",
