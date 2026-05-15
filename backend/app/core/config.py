@@ -39,7 +39,15 @@ class Settings(BaseSettings):
     @property
     def database_url(self) -> str:
         if self.database_url_env:
-            return self.database_url_env
+            url = self.database_url_env.strip()
+            # If a plain Postgres URL was provided (postgres:// or postgresql://)
+            # and no explicit driver is present, prefer the modern psycopg (psycopg3) driver.
+            if "+psycopg" not in url:
+                if url.startswith("postgresql://"):
+                    url = url.replace("postgresql://", "postgresql+psycopg://", 1)
+                elif url.startswith("postgres://"):
+                    url = url.replace("postgres://", "postgresql+psycopg://", 1)
+            return url
         self.database_path.parent.mkdir(parents=True, exist_ok=True)
         return f"sqlite:///{self.database_path.as_posix()}"
 
