@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -17,6 +18,9 @@ from app.routers.sensors import router as sensors_router
 from app.services.seed_service import seed_initial_data
 
 
+logger = logging.getLogger(__name__)
+
+
 def run_migrations() -> None:
     backend_dir = Path(__file__).resolve().parents[1]
     if settings.database_url_env is None:
@@ -30,9 +34,13 @@ def run_migrations() -> None:
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    run_migrations()
-    with SessionLocal() as session:
-        seed_initial_data(session)
+    try:
+        run_migrations()
+        with SessionLocal() as session:
+            seed_initial_data(session)
+    except Exception:
+        logger.exception("Application startup failed during migrations or seed.")
+        raise
     yield
 
 

@@ -39,10 +39,10 @@ class Settings(BaseSettings):
 
     @cached_property
     def postgres_driver(self) -> str | None:
-        # Prefer the pure-Python driver first so cloud builds do not depend on binary wheels.
+        # Prefer the modern PostgreSQL driver first; keep pg8000 as a pure-Python fallback.
         candidates = (
-            ("pg8000", "pg8000"),
             ("psycopg", "psycopg"),
+            ("pg8000", "pg8000"),
             ("psycopg2", "psycopg2"),
         )
         for driver, module_name in candidates:
