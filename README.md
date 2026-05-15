@@ -6,7 +6,7 @@ Plataforma web IoT para una estación meteorológica con frontend en React, back
 
 - Frontend: React + TypeScript + Vite + Tailwind CSS
 - Backend: FastAPI + SQLAlchemy + Alembic
-- Base de datos: SQLite embebida en `backend/data/m1k1u.db`
+- Base de datos: SQLite embebida en `backend/data/m1k1u.db` o PostgreSQL si configuras `DATABASE_URL`
 - Autenticación: JWT en cookie HttpOnly
 - Gráficas: Recharts
 - Ingestión IoT: endpoint REST protegido con `X-API-Key`
@@ -98,6 +98,19 @@ Notas:
 - La base `backend/data/m1k1u.db` se crea automáticamente en el primer arranque.
 - El seed crea solo el usuario admin.
 
+### 1.1 Backend con PostgreSQL usando Docker Compose
+
+```powershell
+docker compose up -d
+```
+
+Esto levantará:
+
+- `postgres`: servidor PostgreSQL
+- `backend`: servicio FastAPI conectado a PostgreSQL mediante `DATABASE_URL`
+
+La URL del backend seguirá siendo `http://127.0.0.1:8000`.
+
 ### 2. Frontend
 
 ```powershell
@@ -133,6 +146,7 @@ JWT_EXPIRE_MINUTES=720
 SENSOR_API_KEY=m1k1u-sensor-key
 STATION_ACTIVE_MINUTES=10
 CORS_ORIGIN=http://localhost:5173,http://127.0.0.1:5173
+DATABASE_URL=postgresql://postgres:postgres@postgres:5432/m1k1u
 ```
 
 ### Frontend

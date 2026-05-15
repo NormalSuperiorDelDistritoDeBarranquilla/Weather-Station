@@ -28,6 +28,7 @@ class Settings(BaseSettings):
         default="http://localhost:5173,http://127.0.0.1:5173",
         alias="CORS_ORIGIN",
     )
+    database_url_env: str | None = Field(default=None, alias="DATABASE_URL")
     session_cookie_name: str = "m1k1u_session"
     local_timezone: str = "America/Bogota"
 
@@ -37,6 +38,9 @@ class Settings(BaseSettings):
 
     @property
     def database_url(self) -> str:
+        if self.database_url_env:
+            return self.database_url_env
+        self.database_path.parent.mkdir(parents=True, exist_ok=True)
         return f"sqlite:///{self.database_path.as_posix()}"
 
     @property

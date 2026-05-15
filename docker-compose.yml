@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: m1k1u
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/m1k1u
+      - SECRET_KEY=change-this-secret-key
+      - JWT_EXPIRE_MINUTES=720
+      - SENSOR_API_KEY=m1k1u-sensor-key
+      - STATION_ACTIVE_MINUTES=10
+      - CORS_ORIGIN=http://localhost:5173,http://127.0.0.1:5173
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+
+volumes:
+  postgres_data:

@@ -19,7 +19,8 @@ from app.services.seed_service import seed_initial_data
 
 def run_migrations() -> None:
     backend_dir = Path(__file__).resolve().parents[1]
-    settings.database_path.parent.mkdir(parents=True, exist_ok=True)
+    if settings.database_url_env is None:
+        settings.database_path.parent.mkdir(parents=True, exist_ok=True)
 
     alembic_config = Config(str(backend_dir / "alembic.ini"))
     alembic_config.set_main_option("script_location", str(backend_dir / "alembic"))
