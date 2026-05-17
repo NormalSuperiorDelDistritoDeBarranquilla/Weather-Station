@@ -70,9 +70,12 @@ export function ConsoleHomePage() {
           <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
             <div className="flex items-center gap-3 text-emerald-200">
               <Database className="h-4 w-4" />
-              <span className="text-xs uppercase tracking-[0.24em]">Registros 24h</span>
+              <span className="text-xs uppercase tracking-[0.24em]">Total guardados</span>
             </div>
-            <p className="mt-4 font-display text-3xl text-white">{formatNumber(stats?.total_records, 0)}</p>
+            <p className="mt-4 font-display text-3xl text-white">{formatNumber(stats?.total_records_all_time, 0)}</p>
+            <p className="mt-2 text-sm text-slate-400">
+              Últimas 24h: {formatNumber(stats?.total_records, 0)}
+            </p>
           </div>
           <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
             <div className="flex items-center gap-3 text-violet-200">

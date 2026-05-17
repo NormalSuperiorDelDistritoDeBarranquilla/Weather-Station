@@ -121,6 +121,13 @@ def get_latest_record(db: Session, station_id: str | None = None) -> SensorData 
     return db.scalar(statement.limit(1))
 
 
+def get_total_records(db: Session, station_id: str | None = None) -> int:
+    statement = select(func.count(SensorData.id))
+    if station_id:
+        statement = statement.where(SensorData.station_id == station_id.strip().upper())
+    return int(db.scalar(statement) or 0)
+
+
 def get_station_activity(record: SensorData | None) -> tuple[bool, str, datetime | None]:
     if record is None:
         return False, "Sin conexión", None
@@ -290,6 +297,7 @@ def get_stats_response(
         range=range_value,
         station_id=latest_record.station_id if latest_record else (station_id.strip().upper() if station_id else None),
         total_records=int(aggregates["total_records"] or 0),
+        total_records_all_time=get_total_records(db, station_id=station_id),
         generated_at=utc_now(),
         active=active,
         active_label=active_label,

@@ -176,6 +176,7 @@ class SensorStatsResponse(BaseModel):
     range: HistoryRange
     station_id: str | None
     total_records: int
+    total_records_all_time: int
     generated_at: datetime
     active: bool
     active_label: str

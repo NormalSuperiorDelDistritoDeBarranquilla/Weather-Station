@@ -143,7 +143,8 @@ export function HomePage() {
                 <div className="flex flex-wrap items-center gap-3">
                   <StatusBadge label={selectedBadgeLabel} tone={selectedBadgeTone} />
                   <StatusBadge label={latest?.station_id ?? 'Sin estación'} tone="neutral" />
-                  <StatusBadge label={`${stats?.total_records ?? 0} registros reales en 24h`} tone="neutral" />
+                  <StatusBadge label={`${stats?.total_records_all_time ?? 0} registros guardados`} tone="neutral" />
+                  <StatusBadge label={`${stats?.total_records ?? 0} en últimas 24h`} tone="neutral" />
                   <StatusBadge label={`Lluvia digital: ${rainDigitalStatus}`} tone={rainDigitalStatus === 'Lluvia' ? 'warning' : 'neutral'} />
                 </div>
 
@@ -294,8 +295,9 @@ export function HomePage() {
             </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Registros 24h</p>
-                <p className="mt-3 font-display text-3xl text-white">{formatNumber(stats?.total_records, 0)}</p>
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Total guardados</p>
+                <p className="mt-3 font-display text-3xl text-white">{formatNumber(stats?.total_records_all_time, 0)}</p>
+                <p className="mt-2 text-sm text-slate-400">24h: {formatNumber(stats?.total_records, 0)}</p>
               </div>
               <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
                 <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Estado</p>

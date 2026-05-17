@@ -75,6 +75,7 @@ export interface SensorStatsResponse {
   range: HistoryRange
   station_id: string | null
   total_records: number
+  total_records_all_time: number
   generated_at: string
   active: boolean
   active_label: string

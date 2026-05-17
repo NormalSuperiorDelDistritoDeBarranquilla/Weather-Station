@@ -172,6 +172,7 @@ export function DashboardPage() {
                 tone={latest?.active ? 'success' : 'danger'}
               />
               <StatusBadge label={`Estación ${latest?.station_id ?? '--'}`} tone="info" />
+              <StatusBadge label={`${stats?.total_records_all_time ?? 0} registros guardados`} tone="neutral" />
               <StatusBadge label={`${stats?.total_records ?? 0} muestras en 24h`} tone="neutral" />
               <StatusBadge label={`Lluvia digital: ${rainDigitalStatus}`} tone={rainDigitalStatus === 'Lluvia' ? 'warning' : 'neutral'} />
             </div>
