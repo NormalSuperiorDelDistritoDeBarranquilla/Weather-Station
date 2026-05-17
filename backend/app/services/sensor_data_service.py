@@ -300,14 +300,15 @@ def get_stats_response(
 
 
 def get_public_landing_response(db: Session) -> PublicLandingResponse:
+    public_station_id = settings.public_station_id.strip().upper() or None
     return PublicLandingResponse(
         generated_at=utc_now(),
         location=PUBLIC_LOCATION,
-        latest=get_latest_response(db),
+        latest=get_latest_response(db, station_id=public_station_id),
         stats_24h=get_stats_response(
             db,
             range_value="24h",
-            station_id=None,
+            station_id=public_station_id,
             start_date=None,
             end_date=None,
             search=None,

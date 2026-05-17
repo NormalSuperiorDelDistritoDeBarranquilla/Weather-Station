@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     jwt_expire_minutes: int = Field(default=720, alias="JWT_EXPIRE_MINUTES")
     sensor_api_key: str = Field(default="m1k1u-sensor-key", alias="SENSOR_API_KEY")
     station_active_minutes: int = Field(default=10, alias="STATION_ACTIVE_MINUTES")
+    public_station_id: str = Field(default="M1K1U-001", alias="PUBLIC_STATION_ID")
     cors_origin: str = Field(
         default="http://localhost:5173,http://127.0.0.1:5173",
         alias="CORS_ORIGIN",

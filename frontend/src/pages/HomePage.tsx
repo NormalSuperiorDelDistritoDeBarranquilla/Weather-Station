@@ -34,19 +34,18 @@ export function HomePage() {
   const selectedMetricConfig = metricUI[selectedMetric]
   const selectedScene = publicMetricScenes[selectedMetric]
   const isStationOnline = latest?.active ?? false
+  const hasLatestPacket = Boolean(latest?.latest)
   const rainDigitalStatus = latest?.latest?.rain_digital ?? 'Sin dato'
   const hasSelectedValue = selectedState?.value !== null && selectedState?.value !== undefined
-  const selectedValueText = !isStationOnline
-    ? 'Sin conexión'
-    : hasSelectedValue
-      ? formatMetricValue(selectedState?.value, selectedMetricConfig.unit)
-      : 'Sin dato'
-  const selectedBadgeTone = !isStationOnline ? 'danger' : hasSelectedValue ? 'info' : 'warning'
-  const selectedBadgeLabel = !isStationOnline
-    ? 'Esperando telemetría'
-    : hasSelectedValue
-      ? selectedState?.status_label ?? 'Disponible'
-      : 'Lectura incompleta'
+  const selectedValueText = hasSelectedValue
+    ? formatMetricValue(selectedState?.value, selectedMetricConfig.unit)
+    : 'Sin dato'
+  const selectedBadgeTone = isStationOnline ? 'success' : hasLatestPacket ? 'warning' : 'danger'
+  const selectedBadgeLabel = isStationOnline
+    ? selectedState?.status_label ?? 'Disponible'
+    : hasLatestPacket
+      ? 'Sin reporte reciente'
+      : 'Esperando telemetría'
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -63,7 +62,10 @@ export function HomePage() {
             <div className="relative">
               <span className="pill">Portada pública de la estación</span>
               <div className="mt-6 flex flex-wrap gap-3">
-                <StatusBadge label={isStationOnline ? 'Transmisión activa' : 'Sin conexión'} tone={isStationOnline ? 'success' : 'danger'} />
+                <StatusBadge
+                  label={isStationOnline ? 'Transmisión activa' : hasLatestPacket ? 'Sin reporte reciente' : 'Sin conexión'}
+                  tone={isStationOnline ? 'success' : hasLatestPacket ? 'warning' : 'danger'}
+                />
                 <StatusBadge label="Panel abierto sin login" tone="info" />
                 <StatusBadge label={location.neighborhood} tone="neutral" />
               </div>
@@ -98,7 +100,9 @@ export function HomePage() {
                   <p className="mt-3 text-sm leading-6 text-slate-300">
                     {isStationOnline
                       ? 'La estación sigue dentro de la ventana operativa definida para la telemetría.'
-                      : 'No hay paquete reciente todavía. La portada se actualizará apenas llegue una nueva transmisión.'}
+                      : hasLatestPacket
+                        ? 'Se muestra la última lectura guardada aunque la estación no haya reportado dentro de la ventana reciente.'
+                        : 'No hay paquete reciente todavía. La portada se actualizará apenas llegue una nueva transmisión.'}
                   </p>
                 </div>
               </div>
@@ -148,11 +152,14 @@ export function HomePage() {
                     const metric = metricUI[metricKey]
                     const state = latest?.metric_states[metricKey]
                     const metricHasValue = state?.value !== null && state?.value !== undefined
-                    const value = !isStationOnline
-                      ? 'Sin conexión'
-                      : metricHasValue
-                        ? formatMetricValue(state?.value, metric.unit)
-                        : 'Sin dato'
+                    const value = metricHasValue
+                      ? formatMetricValue(state?.value, metric.unit)
+                      : 'Sin dato'
+                    const supportText = metricHasValue
+                      ? `${state?.status_label ?? 'Disponible'} | Promedio 24h ${formatMetricValue(stats?.metrics[metricKey]?.avg, metric.unit)}`
+                      : hasLatestPacket
+                        ? 'El último paquete no trajo esta variable.'
+                        : 'Sin lectura válida todavía para esta variable.'
 
                     return (
                       <button
@@ -170,11 +177,7 @@ export function HomePage() {
                           <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: metric.chartStroke }} />
                         </div>
                         <p className="mt-3 font-display text-2xl text-white">{value}</p>
-                        <p className="mt-2 text-sm text-slate-300">
-                          {metricHasValue && isStationOnline
-                            ? `${state?.status_label ?? 'Disponible'} | Promedio 24h ${formatMetricValue(stats?.metrics[metricKey]?.avg, metric.unit)}`
-                            : 'Sin lectura válida todavía para esta variable.'}
-                        </p>
+                        <p className="mt-2 text-sm text-slate-300">{supportText}</p>
                       </button>
                     )
                   })}
